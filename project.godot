@@ -14,6 +14,10 @@ config/name="Dragon Jump V4"
 run/main_scene="res://scenes/redone_scene01.tscn"
 config/icon="res://assets/testing/icon.png"
 
+[autoload]
+
+MenuHandler="*res://scripts/menu_handler.gd"
+
 [input]
 
 jump={
@@ -43,6 +47,7 @@ right={
 2d_physics/layer_3="PlayerAttBox"
 2d_physics/layer_4="Enemy AttBox"
 2d_physics/layer_5="Enemy"
+2d_physics/layer_6="Hazards"
 
 [physics]
 

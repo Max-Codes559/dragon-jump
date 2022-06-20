@@ -152,10 +152,11 @@ func _input(event):
 				print("CanGlide true")
 				#enables glide
 	if event is InputEventKey:
-		if event.pressed and event.scancode == KEY_ESCAPE:
+		if event.pressed and event.scancode == KEY_ESCAPE and not CameraM.has_node("Menu"):
 			get_tree().paused = true
 			var ActMenu = MenuScene.instance()
 			CameraM.add_child(ActMenu)
+			print("menu opened")
 		#Menu
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:

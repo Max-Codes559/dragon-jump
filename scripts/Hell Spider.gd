@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal spider_died
+
 onready var Main = get_parent()
 
 onready var sprite = $Sprite
@@ -93,9 +95,11 @@ func Explode():
 	IsExploding = true
 	print("Spider Exploding")
 	animation.play("explode")
-	#queue_free()
+	emit_signal("spider_died")
 
 func _ready():
+	add_to_group("spiders")
+	
 	PatrolPoint = position + Vector2(WalkLength * 64, WalkLength * 64)
 	Position1 = position
 	if Direction == "Vertical":
