@@ -10,6 +10,8 @@ onready var EdgeCheckLeft = $EdgeCheckLeft
 onready var EdgeCheckRight = $EdgeCheckRight
 onready var AttBox = $AttBox
 onready var AttBoxCollider = AttBox.get_child(0)
+onready var ExplosionSound = $ExplosionSound
+onready var PunchSound = $PunchSound
 
 onready var HitWall = $HitWall
 onready var PhaseOneBox = HitWall.get_child(0)
@@ -93,8 +95,8 @@ func Vertical_on_wall(delta):
 func Explode():
 	motion.x = 0
 	IsExploding = true
-	print("Spider Exploding")
 	animation.play("explode")
+	ExplosionSound.playing = true
 	emit_signal("spider_died")
 
 func _ready():
@@ -125,6 +127,7 @@ func _physics_process(delta):
 		
 func _on_HitBox_area_entered(_area):
 	if SecondPhaseAct == false:
+		PunchSound.playing = true
 		IsFalling = true
 	elif SecondPhaseAct == true:
 		Explode()

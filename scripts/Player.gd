@@ -6,6 +6,7 @@ onready var CameraM = get_node("../Camera2D")
 onready var sprite = $Sprite
 onready var AttBox = $AttBox
 onready var CoyoteTimer = $CoyoteTimer
+onready var JumpSound = $JumpSound
 
 const up = Vector2(0, -1)
 var motion = Vector2()
@@ -65,6 +66,7 @@ func jump():
 	if jumps > 0:
 		IsJumping = true
 		animation.play("JumpUp")
+		JumpSound.playing = true
 		motion.y = -JumpForce
 		jumps -= 1
 		#double jump

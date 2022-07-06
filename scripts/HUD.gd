@@ -8,6 +8,12 @@ onready var Hearts = [Heart3, Heart2, Heart1]
 var max_health = 3
 
 func _on_Main_health_changed(new_health):
-	for n in max_health - (new_health):
-		Hearts[n].frame = 1
-		Hearts[n + 1].frame = 0
+	#for n in max_health - (new_health):
+		#Hearts[n].frame = 1
+		#Hearts[n + 1].frame = 0
+	for n in Hearts.size():
+		Hearts[n - 1].frame = 1
+		
+	for n in new_health:
+		Hearts[n - 1].frame = 0
+	print(new_health)

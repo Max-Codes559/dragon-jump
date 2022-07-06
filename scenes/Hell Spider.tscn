@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://assets/Sprites and sheets/Spider Sheet V2.png" type="Texture" id=1]
+[ext_resource path="res://assets/Sprites and sheets/Enemies/Spider Sheet V2.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Hell Spider.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/Retro Explosion Short 15.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/Retro Impact Punch Hurt 01.wav" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=10]
 resource_name = "explode"
@@ -69,6 +71,7 @@ radius = 9.0
 extents = Vector2( 10, 2.5 )
 
 [node name="Hell Spider" type="KinematicBody2D"]
+scale = Vector2( 2, 2 )
 collision_layer = 16
 collision_mask = 34
 script = ExtResource( 2 )
@@ -127,6 +130,13 @@ position = Vector2( 5, 0 )
 cast_to = Vector2( 0, 41 )
 collision_mask = 2
 collide_with_areas = true
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -0.6
+
+[node name="PunchSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
