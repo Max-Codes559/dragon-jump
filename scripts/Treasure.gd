@@ -34,4 +34,5 @@ func _ready():
 func _on_Area2D_area_entered(area):
 	if area.name == "PlayerHitBox":
 		emit_signal("t_collected")
+		#sending to Main
 		queue_free()

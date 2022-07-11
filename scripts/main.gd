@@ -3,6 +3,9 @@ extends Node2D
 signal add_to_timer(time)
 signal health_changed(new_health)
 
+const VictoryScreen = preload("res://scenes/Victory.tscn")
+
+onready var CameraM = $Camera2D
 onready var spiders = get_tree().get_nodes_in_group("spiders")
 onready var treasure = get_tree().get_nodes_in_group("treasure")
 onready var Player = $Player
@@ -21,14 +24,16 @@ func connect_to_treasure():
 		ConnectingTreasure.connect("t_collected", self, "treasure_collect")
 
 func treasure_collect():
-	bonus_time(2)
+	bonus_time(1)
 	TreasureLeft -= 1
-	print(TreasureLeft, " treasures left")
-
+	if TreasureLeft == 0:
+		get_tree().paused = true
+		var VicScreen = VictoryScreen.instance()
+		CameraM.add_child(VicScreen)
+	#activates when treasure sends t_collected signal
 func add_spider_time():
 	bonus_time(5)
-	print("10 sec added")
-	#activates when spider_died signal sent from spider script
+	#activates when spider sends spider_died
 
 func player_damaged(damage, cause):
 	if cause == "enemy" and Player.DashingInv == false:
@@ -47,12 +52,13 @@ func player_damaged(damage, cause):
 		player_health = 3
 		
 	emit_signal("health_changed", player_health)
+	
 func player_death():
 	get_tree().reload_current_scene()
 	
 func bonus_time(time):
-	print("bonus time added")
 	emit_signal("add_to_timer", time)
+	#sending to CountDown
 
 func _ready():
 	connect_to_spiders()

@@ -2,12 +2,9 @@ extends Timer
 
 func _ready():
 	start()
-	print("timer started")
-
 
 func _on_CountDown_timeout():
-	print("Timer ended")
-
+	get_tree().reload_current_scene()
 
 func _on_Main_add_to_timer(time):
 	var Remainder = time_left

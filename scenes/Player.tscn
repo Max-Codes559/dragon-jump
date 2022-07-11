@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/Sprites and sheets/Bones/Bones Sheet V3.png" type="Texture" id=2]
-[ext_resource path="res://assets/sounds/Retro FootStep 03.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=8]
 resource_name = "Dash"
@@ -156,8 +155,12 @@ shape = SubResource( 9 )
 wait_time = 0.03
 one_shot = true
 
-[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
+[node name="PlayerSound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
+pitch_scale = 0.7
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
+[connection signal="area_entered" from="PlayerHitBox" to="." method="_on_PlayerHitBox_area_entered"]

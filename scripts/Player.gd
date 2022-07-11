@@ -1,19 +1,25 @@
 extends KinematicBody2D
 
 const MenuScene = preload("res://scenes/Menu.tscn")
+onready var Main = get_parent()
 onready var animation = $AnimationPlayer
 onready var CameraM = get_node("../Camera2D")
 onready var sprite = $Sprite
 onready var AttBox = $AttBox
 onready var CoyoteTimer = $CoyoteTimer
-onready var JumpSound = $JumpSound
+onready var PlayerSound = $PlayerSound
+onready var PickupSound = $PickupSound
 
+var JumpSound = preload("res://assets/sounds/Retro FootStep 03.wav")
+var TreasureSound = preload("res://assets/sounds/Retro PickUp Coin 07.wav")
+var HealthSound = preload("res://assets/sounds/Retro PickUp 18.wav")
+#Impact and explosion are both played from spider
 const up = Vector2(0, -1)
 var motion = Vector2()
 export(int, 1, 20) var Speed = 1
-var MaxSpeed = 25000 * Speed
+var MaxSpeed = 12500 * Speed
 
-const DashSpeed = 65000
+const DashSpeed = 32500
 var Dashes = 2 
 var DashDirect = Vector2.ZERO
 var DashingMove = false
@@ -21,11 +27,11 @@ var DashingInv = false
 var DashMoveTime = 0.4
 var DashGraceTime = 0.3
 
-export var gravity = 30
-var DefMFS = 600
+export var gravity = 15
+var DefMFS = 300
 var MaxFallSpeed = DefMFS
-var GlideSpeed = 200
-const JumpForce = 800
+var GlideSpeed = 100
+const JumpForce = 400
 var jumps = 2
 var CanGlide = false
 var Gliding = false
@@ -66,7 +72,8 @@ func jump():
 	if jumps > 0:
 		IsJumping = true
 		animation.play("JumpUp")
-		JumpSound.playing = true
+		PlayerSound.stream = JumpSound
+		PlayerSound.playing = true
 		motion.y = -JumpForce
 		jumps -= 1
 		#double jump
@@ -185,3 +192,13 @@ func _on_AnimationPlayer_animation_started(anim_name):
 	if anim_name == "Dash":
 		set_dashing()
 		print("Dash started")
+
+
+func _on_PlayerHitBox_area_entered(area):
+	if area.name == "TreasurePU":
+		PickupSound.stream = TreasureSound
+		PickupSound.playing = true
+		print("Treasure sound Play")
+	if area.name == "HealthPU" and Main.player_health < 3:
+		PickupSound.stream = HealthSound
+		PickupSound.playing = true

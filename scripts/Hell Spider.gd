@@ -18,8 +18,8 @@ onready var PhaseOneBox = HitWall.get_child(0)
 onready var PhaseTwoBox = HitWall.get_child(1)
 
 export(int, 0, 100) var WalkLength = 5
-export(int, 10, 100) var Speed = 25
-export(int, 10, 100) var SpeedTwo = 60
+export(int, 10, 100) var Speed = 13
+export(int, 10, 100) var SpeedTwo = 30
 export(String, "Vertical", "Horizontal") var Direction = "Vertical"
 export var switch = 1
 
