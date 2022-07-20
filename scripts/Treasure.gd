@@ -2,10 +2,15 @@ extends Node2D
 
 signal t_collected
 
+onready var Player = get_node("../Player")
+
+onready var TreasurePUShape = $TreasurePU/CollisionShape2D
 onready var animation = $Animation
 onready var bounce = $Bounce
 onready var display = $Display
 export(String, "Pearl", "Gold", "Diamond") var TType = "Pearl"
+
+var collected = false
 
 func _ready():
 	add_to_group("treasure")
@@ -32,7 +37,18 @@ func _ready():
 		display.scale = Vector2(0.5, 0.5)
 
 func _on_Area2D_area_entered(area):
-	if area.name == "PlayerHitBox":
+	if area.name == "PlayerHitBox" and collected == false:
 		emit_signal("t_collected")
+		collected = true
+		TreasurePUShape.set_deferred("disabled", true)
+		bounce.stop()
+		bounce.play("shrink")
 		#sending to Main
-		queue_free()
+
+func _process(delta):
+	if collected == true:
+		position = lerp(position, Player.position, 0.15)
+
+
+func _on_Bounce_animation_finished(shrink):
+	queue_free()

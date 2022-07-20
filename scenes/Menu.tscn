@@ -47,6 +47,29 @@ margin_bottom = 550.0
 rect_min_size = Vector2( 400, 150 )
 text = "EXIT"
 
+[node name="MusicToggle" type="CheckBox" parent="."]
+margin_left = 432.0
+margin_top = -271.0
+margin_right = 456.0
+margin_bottom = -247.0
+rect_scale = Vector2( 4, 4 )
+pressed = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MusicToggle"]
+margin_top = 19.75
+margin_right = 51.0
+margin_bottom = 50.75
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Music On"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="toggled" from="MusicToggle" to="." method="_on_MusicToggle_toggled"]

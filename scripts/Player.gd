@@ -6,6 +6,8 @@ onready var animation = $AnimationPlayer
 onready var CameraM = get_node("../Camera2D")
 onready var sprite = $Sprite
 onready var AttBox = $AttBox
+onready var KickBox = $KickBox
+onready var KickBoxShape = $KickBox/CollisionShape2D
 onready var CoyoteTimer = $CoyoteTimer
 onready var PlayerSound = $PlayerSound
 onready var PickupSound = $PickupSound
@@ -24,8 +26,12 @@ var Dashes = 2
 var DashDirect = Vector2.ZERO
 var DashingMove = false
 var DashingInv = false
+#Invincibility from dashing, slightly longer than move
 var DashMoveTime = 0.4
 var DashGraceTime = 0.3
+
+var Kicking = false
+#set true and false with animation
 
 export var gravity = 15
 var DefMFS = 300
@@ -39,7 +45,7 @@ var IsFalling = false
 var IsJumping = false
 
 func dash():
-	if DashingInv == false:
+	if DashingInv == false and Kicking == false:
 		animation.play("Dash")
 		DashDirect = get_local_mouse_position()
 		if DashDirect != Vector2.ZERO:
@@ -59,17 +65,17 @@ func set_dashing():
 		AttBox.monitorable = true
 		DashingMove = true
 		DashingInv = true
-		yield(get_tree().create_timer(DashMoveTime), "timeout")
+		yield(get_tree().create_timer(DashMoveTime, false), "timeout")
 		DashingMove = false
 		
-		yield(get_tree().create_timer(DashGraceTime), "timeout")
+		yield(get_tree().create_timer(DashGraceTime, false), "timeout")
 		AttBox.monitorable = false
 		DashingInv = false
 		print("Dash ended")
 		Dashes -= 1
 	
 func jump():
-	if jumps > 0:
+	if jumps > 0 and Kicking == false:
 		IsJumping = true
 		animation.play("JumpUp")
 		PlayerSound.stream = JumpSound
@@ -78,11 +84,28 @@ func jump():
 		jumps -= 1
 		#double jump
 func glide():
-	Gliding = true
-	MaxFallSpeed = GlideSpeed
-	animation.play("Gliding")
-	print("gliding")
-	#glide function
+	if Kicking == false:
+		Gliding = true
+		MaxFallSpeed = GlideSpeed
+		animation.play("Gliding")
+		print("gliding")
+		#glide function
+func kick():
+	if DashingInv == false:
+		Kicking = true
+		if sprite.flip_h == false:
+			KickBoxShape.position.x = 18
+		elif sprite.flip_h == true:
+			KickBoxShape.position.x = -24
+		
+		KickBox.monitorable = true
+		animation.play("Kick")
+		yield(get_tree().create_timer(0.8, false), "timeout")
+	
+		Kicking = false
+		KickBox.monitorable = false
+		print("Kick ended")
+		print(Kicking)
 func falling(delta):
 	if DashingMove == false and CoyoteTimer.is_stopped():
 		motion.y += gravity * delta * 53
@@ -95,13 +118,16 @@ func walking(delta):
 		motion.x = lerp(motion.x, -MaxSpeed * delta, 0.2)
 		sprite.flip_h = true
 		if is_on_floor() == true:
-			animation.play("Walking")
+			animation.queue("Walking")
+			animation.playback_speed = abs(motion.x/150)
 	elif Input.is_action_pressed("right") and DashingMove == false:
 		motion.x = lerp(motion.x, MaxSpeed * delta, 0.2)
 		sprite.flip_h = false
 		if is_on_floor() == true:
-			animation.play("Walking")
+			animation.queue("Walking")
+			animation.playback_speed = abs(motion.x/150)
 	else:
+		animation.playback_speed = 1
 		if is_on_floor() == true:
 			 motion.x = lerp(motion.x, 0, 0.5)
 			#friction
@@ -138,7 +164,7 @@ func _physics_process(delta):
 		motion = DashDirect * delta
 	if motion.y > 200 and is_on_floor() == false and IsFalling == false and DashingMove == false:
 		IsFalling = true
-		animation.play("Falling")
+		animation.queue("Falling")
 		#plays falling animation
 	falling(delta)
 	walking(delta)
@@ -160,6 +186,9 @@ func _input(event):
 				CanGlide = true
 				print("CanGlide true")
 				#enables glide
+	if Input.is_action_just_pressed("kick"):
+		kick()
+		
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ESCAPE and not CameraM.has_node("Menu"):
 			get_tree().paused = true
@@ -180,19 +209,17 @@ func _input(event):
 				MaxFallSpeed = DefMFS
 				animation.stop()
 
-func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "Dash":
-		sprite.frame = 0
-	if anim_name == "JumpUp":
-		sprite.frame = 8
-	if anim_name == "Falling":
-		sprite.frame = 8
-
 func _on_AnimationPlayer_animation_started(anim_name):
 	if anim_name == "Dash":
 		set_dashing()
 		print("Dash started")
 
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Dash" or anim_name == "Kick":
+		sprite.frame = 0
+
+	if anim_name == "Falling" or anim_name == "JumpUp":
+		sprite.frame = 8
 
 func _on_PlayerHitBox_area_entered(area):
 	if area.name == "TreasurePU":

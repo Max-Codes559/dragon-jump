@@ -1,4 +1,6 @@
 extends Node2D
+
+var MusicOn = true
 	
 func _on_RestartButton_pressed():
 	get_tree().paused = false
@@ -18,3 +20,8 @@ func _input(event):
 			get_tree().paused = false
 			queue_free()
 
+
+
+func _on_MusicToggle_toggled(button_pressed):
+	if button_pressed == true:
+		MusicOn = true
