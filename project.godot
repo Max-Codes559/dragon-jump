@@ -8,16 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Node2D",
-"class": "MainScript",
-"language": "GDScript",
-"path": "res://Reader.gd"
-} ]
-_global_script_class_icons={
-"MainScript": ""
-}
-
 [application]
 
 config/name="Dragon Jump V4"
