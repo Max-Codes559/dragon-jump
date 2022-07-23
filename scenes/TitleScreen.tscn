@@ -1,0 +1,140 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/fonts/font_md.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/font_title_md.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/font_title_lg.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/DragonJump Back.jpeg" type="Texture" id=4]
+
+[node name="TitleScreen" type="TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Main" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -312.0
+margin_top = -172.0
+margin_right = 312.0
+margin_bottom = 172.0
+
+[node name="Title" type="Label" parent="Main"]
+margin_right = 624.0
+margin_bottom = 120.0
+custom_colors/font_color = Color( 0.8, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Dragon Jump"
+align = 1
+
+[node name="SubTitle" type="Label" parent="Main"]
+margin_top = 124.0
+margin_right = 624.0
+margin_bottom = 184.0
+custom_colors/font_color = Color( 0.8, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Insert Sub Title"
+align = 1
+
+[node name="BtnInstructions" type="Button" parent="Main"]
+margin_top = 188.0
+margin_right = 624.0
+margin_bottom = 224.0
+custom_fonts/font = ExtResource( 1 )
+text = "Instructions"
+
+[node name="BtnLevel" type="Button" parent="Main"]
+margin_top = 228.0
+margin_right = 624.0
+margin_bottom = 264.0
+custom_fonts/font = ExtResource( 1 )
+text = "Select Level"
+
+[node name="BtnOptions" type="Button" parent="Main"]
+margin_top = 268.0
+margin_right = 624.0
+margin_bottom = 304.0
+custom_fonts/font = ExtResource( 1 )
+text = "Options"
+
+[node name="BtnQuit" type="Button" parent="Main"]
+margin_top = 308.0
+margin_right = 624.0
+margin_bottom = 344.0
+custom_fonts/font = ExtResource( 1 )
+text = "Quit"
+
+[node name="LevelSelect" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -43.0
+margin_top = -40.0
+margin_right = 43.0
+margin_bottom = 40.0
+
+[node name="LevelList" type="VBoxContainer" parent="LevelSelect"]
+margin_right = 202.0
+margin_bottom = 36.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelSelect/LevelList"]
+margin_right = 202.0
+margin_bottom = 36.0
+
+[node name="Label" type="Label" parent="LevelSelect/LevelList/HBoxContainer"]
+margin_top = 3.0
+margin_right = 130.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 1 )
+text = "Test Level"
+
+[node name="TextureRect" type="TextureRect" parent="LevelSelect/LevelList/HBoxContainer"]
+margin_left = 134.0
+margin_right = 134.0
+margin_bottom = 36.0
+
+[node name="Button" type="Button" parent="LevelSelect/LevelList/HBoxContainer"]
+margin_left = 138.0
+margin_right = 202.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 1 )
+text = "Play"
+
+[node name="BtnBack2" type="Button" parent="LevelSelect"]
+margin_top = 40.0
+margin_right = 202.0
+margin_bottom = 76.0
+custom_fonts/font = ExtResource( 1 )
+text = "Back"
+
+[node name="Options" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="BtnBack" type="Button" parent="Options"]
+margin_right = 72.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 1 )
+text = "Back"
+
+[node name="Instruction" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
