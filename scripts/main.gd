@@ -39,7 +39,7 @@ func player_damaged(damage, cause):
 	if cause == "enemy" and Player.DashingInv == false:
 		player_health -= damage
 
-	if cause == "spike":
+	if cause in ["spike", "lava"]:
 		player_health -= damage
 		
 	if cause == "health":

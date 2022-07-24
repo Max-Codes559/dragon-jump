@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sheet-oldwoodenprops-byimogiagames.png-e18b78c83522b4b0789bfe37449a1c6a.stex"
+path="res://.import/box_item.png-47f87d84180d0bee742c245af126e1c1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites and sheets/sheet-oldwoodenprops-byimogiagames.png"
-dest_files=[ "res://.import/sheet-oldwoodenprops-byimogiagames.png-e18b78c83522b4b0789bfe37449a1c6a.stex" ]
+source_file="res://assets/Sprites and sheets/box_item.png"
+dest_files=[ "res://.import/box_item.png-47f87d84180d0bee742c245af126e1c1.stex" ]
 
 [params]
 
