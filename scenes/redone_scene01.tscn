@@ -89,6 +89,10 @@ position = Vector2( 4, 768 )
 scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 8 )
 
+[node name="GraceTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
 [node name="TempSkyBox" type="ColorRect" parent="."]
 margin_left = -10416.0
 margin_top = -8464.0
@@ -589,8 +593,8 @@ pause_mode = 2
 stream = ExtResource( 11 )
 volume_db = -6.0
 script = ExtResource( 12 )
-PlayMusic = false
 
 [connection signal="add_to_timer" from="." to="CountDown" method="_on_Main_add_to_timer"]
 [connection signal="health_changed" from="." to="Camera2D/HUD" method="_on_Main_health_changed"]
+[connection signal="timeout" from="GraceTimer" to="." method="_on_GraceTimer_timeout"]
 [connection signal="timeout" from="CountDown" to="CountDown" method="_on_CountDown_timeout"]

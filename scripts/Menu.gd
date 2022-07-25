@@ -1,6 +1,10 @@
 extends Node2D
 
-var MusicOn = true
+onready var LevelMusic = get_node("../../Player/LevelMusic")
+onready var MusicToggle = $MusicToggle
+	
+func _ready():
+	MusicToggle.set_pressed_no_signal(LevelMusic.MusicOn) 
 	
 func _on_RestartButton_pressed():
 	get_tree().paused = false
@@ -20,8 +24,9 @@ func _input(event):
 			get_tree().paused = false
 			queue_free()
 
-
-
 func _on_MusicToggle_toggled(button_pressed):
 	if button_pressed == true:
-		MusicOn = true
+		LevelMusic.MusicOn = true
+	elif button_pressed == false:
+		LevelMusic.MusicOn = false
+		LevelMusic.stop()

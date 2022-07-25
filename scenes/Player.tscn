@@ -125,7 +125,7 @@ extents = Vector2( 4.4, 28.2353 )
 radius = 1.4
 
 [sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 10, 24 )
+extents = Vector2( 17, 24 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, -32 )
@@ -175,6 +175,10 @@ shape = SubResource( 9 )
 wait_time = 0.03
 one_shot = true
 
+[node name="StunTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [node name="PlayerSound" type="AudioStreamPlayer2D" parent="."]
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
@@ -187,9 +191,10 @@ collision_mask = 16
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KickBox"]
-position = Vector2( 18, 8 )
+position = Vector2( 25, 8 )
 shape = SubResource( 14 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="area_entered" from="PlayerHitBox" to="." method="_on_PlayerHitBox_area_entered"]
+[connection signal="timeout" from="StunTimer" to="." method="_on_StunTimer_timeout"]

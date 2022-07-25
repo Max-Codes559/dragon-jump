@@ -9,13 +9,15 @@ onready var AttBox = $AttBox
 onready var KickBox = $KickBox
 onready var KickBoxShape = $KickBox/CollisionShape2D
 onready var CoyoteTimer = $CoyoteTimer
+onready var StunTimer = $StunTimer
 onready var PlayerSound = $PlayerSound
 onready var PickupSound = $PickupSound
 
-var JumpSound = preload("res://assets/sounds/Retro FootStep 03.wav")
-var TreasureSound = preload("res://assets/sounds/Retro PickUp Coin 07.wav")
-var HealthSound = preload("res://assets/sounds/Retro PickUp 18.wav")
+const JumpSound = preload("res://assets/sounds/Retro FootStep 03.wav")
+const TreasureSound = preload("res://assets/sounds/Retro PickUp Coin 07.wav")
+const HealthSound = preload("res://assets/sounds/Retro PickUp 18.wav")
 #Impact and explosion are both played from spider
+var stunned = false
 const up = Vector2(0, -1)
 var motion = Vector2()
 export(int, 1, 20) var Speed = 1
@@ -31,7 +33,6 @@ var DashMoveTime = 0.4
 var DashGraceTime = 0.3
 
 var Kicking = false
-#set true and false with animation
 
 export var gravity = 15
 var DefMFS = 300
@@ -43,6 +44,22 @@ var CanGlide = false
 var Gliding = false
 var IsFalling = false
 var IsJumping = false
+
+func knockback(direction):
+	var KnockbackD = global_position - direction
+	KnockbackD = KnockbackD.normalized()
+	motion = KnockbackD * 700
+
+func grace(start_end, direction):
+	if start_end == "start":
+		sprite.modulate = Color(1, 1, 1, 0.5)
+		StunTimer.start()
+		stunned = true
+		sprite.frame = 4
+		knockback(direction)
+		
+	if start_end == "end":
+		sprite.modulate = Color(1, 1, 1, 1)
 
 func dash():
 	if DashingInv == false and Kicking == false:
@@ -104,8 +121,7 @@ func kick():
 	
 		Kicking = false
 		KickBox.monitorable = false
-		print("Kick ended")
-		print(Kicking)
+
 func falling(delta):
 	if DashingMove == false and CoyoteTimer.is_stopped():
 		motion.y += gravity * delta * 53
@@ -114,30 +130,39 @@ func falling(delta):
 			#maxes out fall speed at MaxFallSpeed
 func walking(delta):
 	#enables built in movement function
-	if Input.is_action_pressed("left") and DashingMove == false:
-		motion.x = lerp(motion.x, -MaxSpeed * delta, 0.2)
-		sprite.flip_h = true
-		if is_on_floor() == true:
-			animation.queue("Walking")
-			animation.playback_speed = abs(motion.x/150)
-	elif Input.is_action_pressed("right") and DashingMove == false:
-		motion.x = lerp(motion.x, MaxSpeed * delta, 0.2)
-		sprite.flip_h = false
-		if is_on_floor() == true:
-			animation.queue("Walking")
-			animation.playback_speed = abs(motion.x/150)
-	else:
+	if stunned == false:
+		if Input.is_action_pressed("left") and DashingMove == false:
+			motion.x = lerp(motion.x, -MaxSpeed * delta, 0.2)
+			sprite.flip_h = true
+			if is_on_floor() == true:
+				animation.queue("Walking")
+				animation.playback_speed = abs(motion.x/150)
+		elif Input.is_action_pressed("right") and DashingMove == false:
+			motion.x = lerp(motion.x, MaxSpeed * delta, 0.2)
+			sprite.flip_h = false
+			if is_on_floor() == true:
+				animation.queue("Walking")
+				animation.playback_speed = abs(motion.x/150)
+		else:
+			animation.playback_speed = 1
+			if is_on_floor() == true:
+				 motion.x = lerp(motion.x, 0, 0.5)
+				#friction
+			elif is_on_floor() == false:
+				motion.x = lerp(motion.x, 0, 0.025)
+		if Input.is_action_just_released("left") or Input.is_action_just_released("right"):
+			if animation.current_animation == "Walking":
+				animation.stop()
+				sprite.frame = 0
+	elif stunned == true:
+		animation.stop()
+		sprite.frame = 4
 		animation.playback_speed = 1
 		if is_on_floor() == true:
-			 motion.x = lerp(motion.x, 0, 0.5)
-			#friction
+			 motion.x = lerp(motion.x, 0, 0.025)
+			#friction while stunned = less
 		elif is_on_floor() == false:
 			motion.x = lerp(motion.x, 0, 0.025)
-
-	if Input.is_action_just_released("left") or Input.is_action_just_released("right"):
-		if animation.current_animation == "Walking":
-			animation.stop()
-			sprite.frame = 0
 			#air resistance
 		#basic walking
 func floor_reset():
@@ -153,6 +178,9 @@ func floor_reset():
 		animation.stop()
 		Gliding = false
 		sprite.frame = 0
+
+func _ready():
+	Main.connect("hurt_grace", self, "grace")
 
 func _physics_process(delta):
 	var was_on_floor = is_on_floor()
@@ -173,21 +201,33 @@ func _physics_process(delta):
 		floor_reset()
 
 func _input(event):
-	if Input.is_action_just_pressed("jump"):
-		jump()
-		if jumps == 0 and CanGlide == true:
-			if MaxFallSpeed == DefMFS:
-				glide()
-			elif MaxFallSpeed == GlideSpeed:
-				MaxFallSpeed = DefMFS
-				animation.stop()
-				#jump/glide
-	if Input.is_action_just_released("jump") and jumps == 0:
-				CanGlide = true
-				print("CanGlide true")
-				#enables glide
-	if Input.is_action_just_pressed("kick"):
-		kick()
+	if stunned == false:
+		if Input.is_action_just_pressed("jump"):
+			jump()
+			if jumps == 0 and CanGlide == true:
+				if MaxFallSpeed == DefMFS:
+					glide()
+				elif MaxFallSpeed == GlideSpeed:
+					MaxFallSpeed = DefMFS
+					animation.stop()
+					#jump/glide
+		if Input.is_action_just_released("jump") and jumps == 0:
+					CanGlide = true
+					#enables glide
+		if Input.is_action_just_pressed("kick"):
+			kick()
+		if event is InputEventMouseButton:
+			if event.button_index == BUTTON_LEFT and event.pressed:
+				if Dashes > 0:
+					dash()
+					#Dash
+		if event is InputEventMouseButton:
+			if event.button_index == BUTTON_RIGHT and event.pressed:
+				if MaxFallSpeed == DefMFS:
+					glide()
+				elif MaxFallSpeed == GlideSpeed:
+					MaxFallSpeed = DefMFS
+					animation.stop()
 		
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ESCAPE and not CameraM.has_node("Menu"):
@@ -196,18 +236,6 @@ func _input(event):
 			CameraM.add_child(ActMenu)
 			print("menu opened")
 		#Menu
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
-			if Dashes > 0:
-				dash()
-				#Dash
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_RIGHT and event.pressed:
-			if MaxFallSpeed == DefMFS:
-				glide()
-			elif MaxFallSpeed == GlideSpeed:
-				MaxFallSpeed = DefMFS
-				animation.stop()
 
 func _on_AnimationPlayer_animation_started(anim_name):
 	if anim_name == "Dash":
@@ -229,3 +257,8 @@ func _on_PlayerHitBox_area_entered(area):
 	if area.name == "HealthPU" and Main.player_health < 3:
 		PickupSound.stream = HealthSound
 		PickupSound.playing = true
+
+func _on_StunTimer_timeout():
+	stunned = false
+	sprite.frame = 0
+
