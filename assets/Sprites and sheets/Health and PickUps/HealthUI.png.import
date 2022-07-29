@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spikers.png-1537b2e44d50b1defd77f352d9813f58.stex"
+path="res://.import/HealthUI.png-c000c73ec47f3e77888fac97f3a0329d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites and sheets/spikers.png"
-dest_files=[ "res://.import/spikers.png-1537b2e44d50b1defd77f352d9813f58.stex" ]
+source_file="res://assets/Sprites and sheets/Health and PickUps/HealthUI.png"
+dest_files=[ "res://.import/HealthUI.png-c000c73ec47f3e77888fac97f3a0329d.stex" ]
 
 [params]
 

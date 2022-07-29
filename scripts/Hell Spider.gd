@@ -50,7 +50,6 @@ func Ground_walk(delta):
 		#Gravity
 
 func Second_phase():
-	print("Second Phase Entered")
 	IsFalling = false
 	PhaseOneBox.set_deferred("disabled", true)
 	PhaseTwoBox.set_deferred("disabled", false)

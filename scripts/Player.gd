@@ -13,7 +13,9 @@ onready var StunTimer = $StunTimer
 onready var PlayerSound = $PlayerSound
 onready var PickupSound = $PickupSound
 
+onready var LevelMusic = $LevelMusic
 const JumpSound = preload("res://assets/sounds/Retro FootStep 03.wav")
+const HurtSound = preload("res://assets/sounds/Retro Event Wrong Simple 07.wav")
 const TreasureSound = preload("res://assets/sounds/Retro PickUp Coin 07.wav")
 const HealthSound = preload("res://assets/sounds/Retro PickUp 18.wav")
 #Impact and explosion are both played from spider
@@ -49,7 +51,8 @@ func knockback(direction):
 	var KnockbackD = global_position - direction
 	KnockbackD = KnockbackD.normalized()
 	motion = KnockbackD * 700
-
+	PlayerSound.stream = HurtSound
+	PlayerSound.playing = true
 func grace(start_end, direction):
 	if start_end == "start":
 		sprite.modulate = Color(1, 1, 1, 0.5)
@@ -88,7 +91,6 @@ func set_dashing():
 		yield(get_tree().create_timer(DashGraceTime, false), "timeout")
 		AttBox.monitorable = false
 		DashingInv = false
-		print("Dash ended")
 		Dashes -= 1
 	
 func jump():
@@ -105,7 +107,6 @@ func glide():
 		Gliding = true
 		MaxFallSpeed = GlideSpeed
 		animation.play("Gliding")
-		print("gliding")
 		#glide function
 func kick():
 	if DashingInv == false:
@@ -201,6 +202,14 @@ func _physics_process(delta):
 		floor_reset()
 
 func _input(event):
+	if Input.is_action_just_pressed("MusicToggle"):
+		if LevelMusic.MusicOn == true:
+			LevelMusic.MusicOn = false
+			LevelMusic.stop()
+			#Music off
+		elif LevelMusic.MusicOn == false:
+			LevelMusic.MusicOn = true
+			#Music on
 	if stunned == false:
 		if Input.is_action_just_pressed("jump"):
 			jump()
@@ -234,13 +243,11 @@ func _input(event):
 			get_tree().paused = true
 			var ActMenu = MenuScene.instance()
 			CameraM.add_child(ActMenu)
-			print("menu opened")
 		#Menu
 
 func _on_AnimationPlayer_animation_started(anim_name):
 	if anim_name == "Dash":
 		set_dashing()
-		print("Dash started")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Dash" or anim_name == "Kick":
@@ -253,11 +260,10 @@ func _on_PlayerHitBox_area_entered(area):
 	if area.name == "TreasurePU":
 		PickupSound.stream = TreasureSound
 		PickupSound.playing = true
-		print("Treasure sound Play")
 	if area.name == "HealthPU" and Main.player_health < 3:
 		PickupSound.stream = HealthSound
 		PickupSound.playing = true
-
+#damage handled between enemy scripts and main
 func _on_StunTimer_timeout():
 	stunned = false
 	sprite.frame = 0

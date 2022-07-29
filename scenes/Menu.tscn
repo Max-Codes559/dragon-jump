@@ -12,6 +12,7 @@ margin_left = -512.0
 margin_top = -296.0
 margin_right = 512.0
 margin_bottom = 304.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -26,25 +27,32 @@ custom_constants/separation = 50
 
 [node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_right = 400.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 400, 150 )
+margin_bottom = 100.0
+rect_min_size = Vector2( 400, 100 )
 text = "RESUME"
 
-[node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 200.0
+[node name="Controls" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 150.0
 margin_right = 400.0
-margin_bottom = 350.0
-rect_min_size = Vector2( 400, 150 )
+margin_bottom = 250.0
+rect_min_size = Vector2( 400, 100 )
+text = "Controls"
+
+[node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 300.0
+margin_right = 400.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 400, 100 )
 text = "RESTART"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 400.0
+margin_top = 450.0
 margin_right = 400.0
 margin_bottom = 550.0
-rect_min_size = Vector2( 400, 150 )
+rect_min_size = Vector2( 400, 100 )
 text = "EXIT"
 
 [node name="MusicToggle" type="CheckBox" parent="."]
@@ -70,6 +78,7 @@ __meta__ = {
 }
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="toggled" from="MusicToggle" to="." method="_on_MusicToggle_toggled"]

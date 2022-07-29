@@ -16,4 +16,3 @@ func _on_Main_health_changed(new_health):
 		
 	for n in new_health:
 		Hearts[n - 1].frame = 0
-	print(new_health)

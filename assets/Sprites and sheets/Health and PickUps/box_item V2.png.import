@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Purple Spike.png-5188f58a7445f25721530ce8f7a23c01.stex"
+path="res://.import/box_item V2.png-d20957bbf435eedec2f835f0cccb211a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites and sheets/Purple Spike.png"
-dest_files=[ "res://.import/Purple Spike.png-5188f58a7445f25721530ce8f7a23c01.stex" ]
+source_file="res://assets/Sprites and sheets/Health and PickUps/box_item V2.png"
+dest_files=[ "res://.import/box_item V2.png-d20957bbf435eedec2f835f0cccb211a.stex" ]
 
 [params]
 

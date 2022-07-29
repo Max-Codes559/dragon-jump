@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/Sprites and sheets/Health and PickUps/HealthUI.png" type="Texture" id=1]
+[ext_resource path="res://assets/Sprites and sheets/Health and PickUps/heart_item.png" type="Texture" id=1]
 [ext_resource path="res://scripts/HealthItem.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
@@ -45,12 +45,13 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -4.76837e-07, -4.76837e-07 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 1.23438, 1.23438 )
 texture = ExtResource( 1 )
-hframes = 2
+hframes = 6
+frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "bounce"
+autoplay = "heart_anim"
 anims/bounce = SubResource( 1 )
 anims/heart_anim = SubResource( 3 )
 

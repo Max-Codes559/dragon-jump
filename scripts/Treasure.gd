@@ -16,13 +16,13 @@ func _ready():
 	add_to_group("treasure")
 	
 	if TType == "Pearl":
-		var texture = load("res://assets/Sprites and sheets/Pearl.png")
+		var texture = load("res://assets/Sprites and sheets/Health and PickUps/Pearl.png")
 		display.texture = texture
 		display.hframes = 1
 		display.scale = Vector2(1, 1)
 		
 	if TType == "Gold":
-		var texture = load("res://assets/Sprites and sheets/Gold.png")
+		var texture = load("res://assets/Sprites and sheets/Health and PickUps/Gold.png")
 		display.texture = texture
 		display.hframes = 6
 		bounce.stop()
@@ -30,7 +30,7 @@ func _ready():
 		display.scale = Vector2(1, 1)
 		
 	if TType == "Diamond":
-		var texture = load("res://assets/Sprites and sheets/Diamond.png")
+		var texture = load("res://assets/Sprites and sheets/Health and PickUps/Diamond.png")
 		display.texture = texture
 		display.hframes = 6
 		animation.play("Diamond")
