@@ -124,67 +124,56 @@ smoothing_enabled = true
 
 [node name="Hell Spider" parent="." instance=ExtResource( 4 )]
 position = Vector2( 120, 360 )
-scale = Vector2( 2, 2 )
 WalkLength = 6
 Speed = 30
 Direction = "Horizontal"
 
 [node name="Hell Spider4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 184, 232 )
-scale = Vector2( 2, 2 )
 Speed = 30
 Direction = "Horizontal"
 
 [node name="Hell Spider2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 568, -384 )
-scale = Vector2( 2, 2 )
 Speed = 30
 
 [node name="Hell Spider3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 736, -664 )
-scale = Vector2( 2, 2 )
 Speed = 30
 Direction = "Horizontal"
 
 [node name="Hell Spider5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 872, -512 )
-scale = Vector2( 2, 2 )
 Speed = 30
 Direction = "Horizontal"
 
 [node name="Hell Spider6" parent="." instance=ExtResource( 4 )]
 position = Vector2( 744, -408 )
-scale = Vector2( 2, 2 )
 Speed = 30
 Direction = "Horizontal"
 
 [node name="Hell Spider7" parent="." instance=ExtResource( 4 )]
 position = Vector2( 259, -1820 )
-scale = Vector2( 2, 2 )
 WalkLength = 9
 Speed = 30
 
 [node name="Hell Spider8" parent="." instance=ExtResource( 4 )]
 position = Vector2( 129, -1634 )
-scale = Vector2( 2, 2 )
 WalkLength = 9
 Speed = 30
 
 [node name="Hell Spider9" parent="." instance=ExtResource( 4 )]
 position = Vector2( -619, -1184 )
-scale = Vector2( 2, 2 )
 Speed = 30
 Direction = "Horizontal"
 
 [node name="Hell Spider10" parent="." instance=ExtResource( 4 )]
 position = Vector2( -470, -1085 )
-scale = Vector2( 2, 2 )
 Speed = 30
 Direction = "Horizontal"
 
 [node name="Hell Spider11" parent="." instance=ExtResource( 4 )]
 position = Vector2( -928, -1048 )
-scale = Vector2( 2, 2 )
 WalkLength = 11
 Speed = 30
 Direction = "Horizontal"
