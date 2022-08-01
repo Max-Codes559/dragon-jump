@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Bone hit.wav-6f2d58097117c7f32a693420a36ae0ef.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Bone hit.wav"
+dest_files=[ "res://.import/Bone hit.wav-6f2d58097117c7f32a693420a36ae0ef.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

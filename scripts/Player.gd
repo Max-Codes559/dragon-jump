@@ -14,8 +14,10 @@ onready var PlayerSound = $PlayerSound
 onready var PickupSound = $PickupSound
 
 onready var LevelMusic = $LevelMusic
+const DashSound = preload("res://assets/sounds/Dash_other.wav")
+const KickSound = preload("res://assets/sounds/Kick_sound.wav")
 const JumpSound = preload("res://assets/sounds/Retro FootStep 03.wav")
-const HurtSound = preload("res://assets/sounds/Retro Event Wrong Simple 07.wav")
+const HurtSound = preload("res://assets/sounds/Bone hit.wav")
 const TreasureSound = preload("res://assets/sounds/Retro PickUp Coin 07.wav")
 const HealthSound = preload("res://assets/sounds/Retro PickUp 18.wav")
 #Impact and explosion are both played from spider
@@ -67,6 +69,8 @@ func grace(start_end, direction):
 func dash():
 	if DashingInv == false and Kicking == false:
 		animation.play("Dash")
+		PlayerSound.stream = DashSound
+		PlayerSound.playing = true
 		DashDirect = get_local_mouse_position()
 		if DashDirect != Vector2.ZERO:
 			DashDirect = DashDirect.normalized()
@@ -111,6 +115,8 @@ func glide():
 func kick():
 	if DashingInv == false:
 		Kicking = true
+		PlayerSound.stream = KickSound
+		PlayerSound.playing = true
 		if sprite.flip_h == false:
 			KickBoxShape.position.x = 18
 		elif sprite.flip_h == true:
