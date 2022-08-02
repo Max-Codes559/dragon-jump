@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Pearl.png-4e2b09c0392ada9d2e29f2861b7173cb.stex"
+path="res://.import/spikers.png-0d4620e7235466bb1cff05b7ee6b66c2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites and sheets/Pearl.png"
-dest_files=[ "res://.import/Pearl.png-4e2b09c0392ada9d2e29f2861b7173cb.stex" ]
+source_file="res://assets/Sprites and sheets/Hazards/spikers.png"
+dest_files=[ "res://.import/spikers.png-0d4620e7235466bb1cff05b7ee6b66c2.stex" ]
 
 [params]
 

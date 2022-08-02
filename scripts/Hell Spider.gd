@@ -50,7 +50,6 @@ func Ground_walk(delta):
 		#Gravity
 
 func Second_phase():
-	print("Second Phase Entered")
 	IsFalling = false
 	PhaseOneBox.set_deferred("disabled", true)
 	PhaseTwoBox.set_deferred("disabled", false)
@@ -139,7 +138,7 @@ func _on_HitWall_body_entered(_body):
 
 func _on_AttBox_area_entered(area):
 	if IsExploding == false and area.name == "PlayerHitBox":
-		Main.player_damaged(1, "enemy")
+		Main.player_damaged(1, "enemy", global_position)
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "explode":
