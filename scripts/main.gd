@@ -49,7 +49,7 @@ func player_damaged(damage, cause, direction):
 			GraceTimer.start()
 			emit_signal("hurt_grace", "start", direction)
 
-  if cause == "health":
+	if cause == "health":
 		player_health += damage
 
 	if player_health <= 0:
