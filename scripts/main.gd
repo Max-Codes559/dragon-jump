@@ -43,13 +43,13 @@ func player_damaged(damage, cause, direction):
 		if cause == "enemy" and Player.DashingInv == false and Player.Kicking == false:
 			player_health -= damage
 
-		if cause == "spike":
-			player_health -= damage
-			
+	if cause in ["spike", "lava"]:
+		player_health -= damage
 		if player_health < player_prehealth:
 			GraceTimer.start()
 			emit_signal("hurt_grace", "start", direction)
-	if cause == "health":
+
+  if cause == "health":
 		player_health += damage
 
 	if player_health <= 0:
