@@ -1,23 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/fonts/font_md.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/font_title_md.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/fonts/font_title_lg.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/DragonJump Back.jpeg" type="Texture" id=4]
+[ext_resource path="res://scripts/TitleScreen.gd" type="Script" id=5]
 
 [node name="TitleScreen" type="TextureRect"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -512.0
-margin_top = -300.0
-margin_right = 512.0
-margin_bottom = 300.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 4 )
 expand = true
+script = ExtResource( 5 )
 
 [node name="Main" type="VBoxContainer" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -38,42 +35,41 @@ align = 1
 [node name="SubTitle" type="Label" parent="Main"]
 margin_top = 124.0
 margin_right = 624.0
-margin_bottom = 184.0
+margin_bottom = 169.0
 custom_colors/font_color = Color( 0.8, 0, 0, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "Insert Sub Title"
+text = "The Tale of Bones the Skeleton"
 align = 1
 
 [node name="BtnInstructions" type="Button" parent="Main"]
-margin_top = 188.0
+margin_top = 173.0
 margin_right = 624.0
-margin_bottom = 224.0
+margin_bottom = 209.0
 custom_fonts/font = ExtResource( 1 )
 text = "Instructions"
 
 [node name="BtnLevel" type="Button" parent="Main"]
-margin_top = 228.0
+margin_top = 213.0
 margin_right = 624.0
-margin_bottom = 264.0
+margin_bottom = 249.0
 custom_fonts/font = ExtResource( 1 )
 text = "Select Level"
 
 [node name="BtnOptions" type="Button" parent="Main"]
-margin_top = 268.0
+margin_top = 253.0
 margin_right = 624.0
-margin_bottom = 304.0
+margin_bottom = 289.0
 custom_fonts/font = ExtResource( 1 )
 text = "Options"
 
 [node name="BtnQuit" type="Button" parent="Main"]
-margin_top = 308.0
+margin_top = 293.0
 margin_right = 624.0
-margin_bottom = 344.0
+margin_bottom = 329.0
 custom_fonts/font = ExtResource( 1 )
 text = "Quit"
 
 [node name="LevelSelect" type="VBoxContainer" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -110,7 +106,7 @@ margin_bottom = 36.0
 custom_fonts/font = ExtResource( 1 )
 text = "Play"
 
-[node name="BtnBack2" type="Button" parent="LevelSelect"]
+[node name="BtnLevelBack" type="Button" parent="LevelSelect"]
 margin_top = 40.0
 margin_right = 202.0
 margin_bottom = 76.0
@@ -123,18 +119,141 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
+margin_left = -161.0
+margin_top = -103.0
+margin_right = 161.0
+margin_bottom = 103.0
 
-[node name="BtnBack" type="Button" parent="Options"]
-margin_right = 72.0
-margin_bottom = 36.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Options"]
+margin_right = 322.0
+margin_bottom = 166.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/HBoxContainer"]
+margin_right = 160.0
+margin_bottom = 166.0
+
+[node name="Label" type="Label" parent="Options/HBoxContainer/VBoxContainer"]
+margin_right = 160.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 1 )
+text = "Options"
+align = 1
+
+[node name="GridContainer" type="GridContainer" parent="Options/HBoxContainer/VBoxContainer"]
+margin_top = 34.0
+margin_right = 160.0
+margin_bottom = 108.0
+columns = 2
+
+[node name="Label" type="Label" parent="Options/HBoxContainer/VBoxContainer/GridContainer"]
+margin_right = 80.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 1 )
+text = "Volume"
+
+[node name="HSlider" type="HSlider" parent="Options/HBoxContainer/VBoxContainer/GridContainer"]
+margin_left = 84.0
+margin_right = 160.0
+margin_bottom = 16.0
+value = 50.0
+
+[node name="Label2" type="Label" parent="Options/HBoxContainer/VBoxContainer/GridContainer"]
+margin_top = 39.0
+margin_right = 80.0
+margin_bottom = 69.0
+custom_fonts/font = ExtResource( 1 )
+text = "Music"
+
+[node name="CheckButton" type="CheckButton" parent="Options/HBoxContainer/VBoxContainer/GridContainer"]
+margin_left = 84.0
+margin_top = 34.0
+margin_right = 160.0
+margin_bottom = 74.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Options/HBoxContainer"]
+margin_left = 164.0
+margin_right = 322.0
+margin_bottom = 166.0
+
+[node name="Label" type="Label" parent="Options/HBoxContainer/VBoxContainer2"]
+margin_right = 158.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 1 )
+text = "Controls List"
+align = 1
+
+[node name="GridContainer2" type="GridContainer" parent="Options/HBoxContainer/VBoxContainer2"]
+margin_top = 34.0
+margin_right = 158.0
+margin_bottom = 166.0
+
+[node name="Label" type="Label" parent="Options/HBoxContainer/VBoxContainer2/GridContainer2"]
+margin_right = 158.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 1 )
+text = "Movement"
+
+[node name="Label2" type="Label" parent="Options/HBoxContainer/VBoxContainer2/GridContainer2"]
+margin_top = 34.0
+margin_right = 158.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 1 )
+text = "Dash"
+
+[node name="Label3" type="Label" parent="Options/HBoxContainer/VBoxContainer2/GridContainer2"]
+margin_top = 68.0
+margin_right = 158.0
+margin_bottom = 98.0
+custom_fonts/font = ExtResource( 1 )
+text = "Kick"
+
+[node name="Label4" type="Label" parent="Options/HBoxContainer/VBoxContainer2/GridContainer2"]
+margin_top = 102.0
+margin_right = 158.0
+margin_bottom = 132.0
+custom_fonts/font = ExtResource( 1 )
+text = "Controls List"
+
+[node name="BtnOptionBack" type="Button" parent="Options"]
+margin_top = 170.0
+margin_right = 322.0
+margin_bottom = 206.0
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
 
-[node name="Instruction" type="TextureRect" parent="."]
+[node name="Instruction" type="VBoxContainer" parent="."]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -127.0
+margin_top = -37.0
+margin_right = 127.0
+margin_bottom = 37.0
+
+[node name="Label" type="Label" parent="Instruction"]
+margin_right = 254.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 1 )
+text = "Instructions go here"
+
+[node name="Instructions" type="TextureRect" parent="Instruction"]
+margin_top = 34.0
+margin_right = 254.0
+margin_bottom = 34.0
+
+[node name="BtnInstBack" type="Button" parent="Instruction"]
+margin_top = 38.0
+margin_right = 254.0
+margin_bottom = 74.0
+custom_fonts/font = ExtResource( 1 )
+text = "Back"
+
+[connection signal="pressed" from="Main/BtnInstructions" to="." method="_on_BtnInstructions_pressed"]
+[connection signal="pressed" from="Main/BtnLevel" to="." method="_on_BtnLevel_pressed"]
+[connection signal="pressed" from="Main/BtnOptions" to="." method="_on_BtnOptions_pressed"]
+[connection signal="pressed" from="Main/BtnQuit" to="." method="_on_BtnQuit_pressed"]
+[connection signal="pressed" from="LevelSelect/BtnLevelBack" to="." method="_on_BtnLevelBack_pressed"]
+[connection signal="pressed" from="Options/BtnOptionBack" to="." method="_on_BtnOptionBack_pressed"]
+[connection signal="pressed" from="Instruction/BtnInstBack" to="." method="_on_BtnInstBack_pressed"]
