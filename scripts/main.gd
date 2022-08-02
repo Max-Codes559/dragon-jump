@@ -2,9 +2,11 @@ extends Node2D
 
 signal add_to_timer(time)
 signal health_changed(new_health)
+signal hurt_grace(start_end, direction)
 
 const VictoryScreen = preload("res://scenes/Victory.tscn")
 
+onready var GraceTimer = $GraceTimer
 onready var CameraM = $Camera2D
 onready var spiders = get_tree().get_nodes_in_group("spiders")
 onready var treasure = get_tree().get_nodes_in_group("treasure")
@@ -35,14 +37,19 @@ func add_spider_time():
 	bonus_time(5)
 	#activates when spider sends spider_died
 
-func player_damaged(damage, cause):
-	if cause == "enemy" and Player.DashingInv == false:
-		player_health -= damage
+func player_damaged(damage, cause, direction):
+	var player_prehealth = player_health
+	if GraceTimer.time_left == 0:
+		if cause == "enemy" and Player.DashingInv == false and Player.Kicking == false:
+			player_health -= damage
 
 	if cause in ["spike", "lava"]:
 		player_health -= damage
-		
-	if cause == "health":
+		if player_health < player_prehealth:
+			GraceTimer.start()
+			emit_signal("hurt_grace", "start", direction)
+
+  if cause == "health":
 		player_health += damage
 
 	if player_health <= 0:
@@ -52,6 +59,7 @@ func player_damaged(damage, cause):
 		player_health = 3
 		
 	emit_signal("health_changed", player_health)
+
 	
 func player_death():
 	get_tree().reload_current_scene()
@@ -63,3 +71,6 @@ func bonus_time(time):
 func _ready():
 	connect_to_spiders()
 	connect_to_treasure()
+
+func _on_GraceTimer_timeout():
+	emit_signal("hurt_grace", "end", Vector2.ZERO)

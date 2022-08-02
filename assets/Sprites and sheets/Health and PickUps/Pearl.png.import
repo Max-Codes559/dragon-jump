@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HealthUI.png-cc90ca222cdf37c34db9cf4b98f9c9f3.stex"
+path="res://.import/Pearl.png-fc2eb0c71ab6ab0add72e3e970afd0b9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites and sheets/HealthUI.png"
-dest_files=[ "res://.import/HealthUI.png-cc90ca222cdf37c34db9cf4b98f9c9f3.stex" ]
+source_file="res://assets/Sprites and sheets/Health and PickUps/Pearl.png"
+dest_files=[ "res://.import/Pearl.png-fc2eb0c71ab6ab0add72e3e970afd0b9.stex" ]
 
 [params]
 

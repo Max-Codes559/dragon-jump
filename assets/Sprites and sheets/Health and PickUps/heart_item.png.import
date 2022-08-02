@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Gold.png-6bc1dfeb7f892337151e18199bd2f29b.stex"
+path="res://.import/heart_item.png-922b9af8dcbc8aa48a50b6a81d8d3d8a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites and sheets/Gold.png"
-dest_files=[ "res://.import/Gold.png-6bc1dfeb7f892337151e18199bd2f29b.stex" ]
+source_file="res://assets/Sprites and sheets/Health and PickUps/heart_item.png"
+dest_files=[ "res://.import/heart_item.png-922b9af8dcbc8aa48a50b6a81d8d3d8a.stex" ]
 
 [params]
 

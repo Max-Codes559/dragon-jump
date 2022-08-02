@@ -1,7 +1,7 @@
 extends AudioStreamPlayer
 
-export var PlayMusic = true
+var MusicOn = true
 
 func _process(_delta):
-	if self.playing == false and PlayMusic == true:
+	if self.playing == false and MusicOn == true:
 		self.play()

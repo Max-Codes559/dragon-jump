@@ -12,13 +12,14 @@
 [ext_resource path="res://scripts/CountDown.gd" type="Script" id=10]
 [ext_resource path="res://assets/sounds/Hell Theme.wav" type="AudioStream" id=11]
 [ext_resource path="res://scripts/MusicPlayer.gd" type="Script" id=12]
-[ext_resource path="res://assets/Sprites and sheets/HealthUI.png" type="Texture" id=13]
+[ext_resource path="res://assets/Sprites and sheets/Health and PickUps/HealthUI.png" type="Texture" id=13]
 [ext_resource path="res://scripts/HUD.gd" type="Script" id=14]
 [ext_resource path="res://scripts/CameraM.gd" type="Script" id=15]
 [ext_resource path="res://scenes/HealthItem.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/Treasure.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scenes/Lava.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/Crate.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/I-pixel-u.ttf" type="DynamicFontData" id=18]
 
 [sub_resource type="TileSet" id=4]
 0/name = "HELL.png 0"
@@ -86,17 +87,26 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0.00063324, 16, 0.00063324 )
 } ]
 1/z_index = 0
 
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 18 )
+
 [node name="Main" type="Node2D"]
 position = Vector2( 4, 768 )
 scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 8 )
 
+[node name="GraceTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
 [node name="TempSkyBox" type="ColorRect" parent="."]
+visible = false
 margin_left = -10416.0
 margin_top = -8464.0
 margin_right = 11464.0
 margin_bottom = 3176.0
-color = Color( 0.262745, 0.333333, 0.34902, 1 )
+color = Color( 0.329412, 0.596078, 0.635294, 1 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true,
@@ -104,19 +114,15 @@ __meta__ = {
 }
 
 [node name="SkyBox" type="Sprite" parent="."]
-visible = false
 modulate = Color( 0.964706, 0.984314, 0.921569, 0.607843 )
-position = Vector2( 392, -912 )
-scale = Vector2( 90.7835, 81.5258 )
+position = Vector2( -38.0001, -1556 )
+scale = Vector2( 107.556, 96.5883 )
 z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CountDown" type="Timer" parent="."]
 wait_time = 50.0
@@ -547,15 +553,19 @@ zoom = Vector2( 0.4, 0.4 )
 script = ExtResource( 15 )
 
 [node name="Label" type="Label" parent="Camera2D"]
-margin_left = -56.0
-margin_top = -373.0
-margin_right = 48.0
-margin_bottom = -328.0
+margin_left = -52.0
+margin_top = -266.0
+margin_right = 58.0
+margin_bottom = -221.0
 size_flags_vertical = 1
+custom_colors/font_color = Color( 0.6, 1, 0.968627, 1 )
+custom_colors/font_color_shadow = Color( 0.0588235, 0.0196078, 0.2, 1 )
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = SubResource( 5 )
+align = 1
+valign = 1
+uppercase = true
 script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HUD" type="Control" parent="Camera2D"]
 anchor_right = 1.0
@@ -566,19 +576,19 @@ __meta__ = {
 }
 
 [node name="Heart1" type="Sprite" parent="Camera2D/HUD"]
-position = Vector2( -660, -348 )
+position = Vector2( -454, -226 )
 scale = Vector2( 7, 7 )
 texture = ExtResource( 13 )
 hframes = 2
 
 [node name="Heart2" type="Sprite" parent="Camera2D/HUD"]
-position = Vector2( -512, -348 )
+position = Vector2( -306, -226 )
 scale = Vector2( 7, 7 )
 texture = ExtResource( 13 )
 hframes = 2
 
 [node name="Heart3" type="Sprite" parent="Camera2D/HUD"]
-position = Vector2( -584, -348 )
+position = Vector2( -378, -226 )
 scale = Vector2( 7, 7 )
 texture = ExtResource( 13 )
 hframes = 2
@@ -591,7 +601,6 @@ pause_mode = 2
 stream = ExtResource( 11 )
 volume_db = -6.0
 script = ExtResource( 12 )
-PlayMusic = false
 
 [node name="Lava" parent="." instance=ExtResource( 18 )]
 position = Vector2( 1432, 352 )
@@ -622,4 +631,5 @@ position = Vector2( 1112, -352 )
 
 [connection signal="add_to_timer" from="." to="CountDown" method="_on_Main_add_to_timer"]
 [connection signal="health_changed" from="." to="Camera2D/HUD" method="_on_Main_health_changed"]
+[connection signal="timeout" from="GraceTimer" to="." method="_on_GraceTimer_timeout"]
 [connection signal="timeout" from="CountDown" to="CountDown" method="_on_CountDown_timeout"]
