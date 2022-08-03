@@ -1,16 +1,10 @@
 extends Area2D
 
-const obj_treasure = preload("res://scenes/Treasure.tscn")
+const obj_treasure = preload("res://scenes/CrateTreasure.tscn")
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	add_to_group("crate")
+	#need to count crates to tell how many treasures there WILL be
 
 
 func _on_Crate_area_entered(area):
