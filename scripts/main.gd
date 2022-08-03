@@ -9,10 +9,11 @@ const VictoryScreen = preload("res://scenes/Victory.tscn")
 onready var GraceTimer = $GraceTimer
 onready var CameraM = $Camera2D
 onready var spiders = get_tree().get_nodes_in_group("spiders")
-onready var treasure = get_tree().get_nodes_in_group("treasure")
+onready var TreasureGroup = get_tree().get_nodes_in_group("treasure")
+onready var CrateGroup = get_tree().get_nodes_in_group("crate")
 onready var Player = $Player
 
-onready var TreasureLeft = treasure.size()
+onready var TreasureLeft = TreasureGroup.size() + CrateGroup.size()
 var player_health = 3
 
 func connect_to_spiders():
@@ -21,9 +22,13 @@ func connect_to_spiders():
 		ConnectingSpider.connect("spider_died", self, "add_spider_time")
 		
 func connect_to_treasure():
-	for member in treasure:
+	for member in TreasureGroup:
 		var ConnectingTreasure = member
 		ConnectingTreasure.connect("t_collected", self, "treasure_collect")
+		
+func connect_to_crate_treasure():
+	#TreasureGroup[-1].connect("t_collected", self, "treasure_collect")
+	pass
 
 func treasure_collect():
 	bonus_time(1)
@@ -42,13 +47,15 @@ func player_damaged(damage, cause, direction):
 	if GraceTimer.time_left == 0:
 		if cause == "enemy" and Player.DashingInv == false and Player.Kicking == false:
 			player_health -= damage
+			GraceTimer.start()
+			emit_signal("hurt_grace", "start", direction)
 
-		if cause == "spike":
-			player_health -= damage
-			
+	if cause in ["spike", "lava"]:
+		player_health -= damage
 		if player_health < player_prehealth:
 			GraceTimer.start()
 			emit_signal("hurt_grace", "start", direction)
+
 	if cause == "health":
 		player_health += damage
 
