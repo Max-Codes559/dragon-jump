@@ -13,9 +13,7 @@ onready var main = get_parent()
 
 var collected = false
 
-func _ready():
-	add_to_group("treasure")
-	
+func TRandomize():
 	var TType = randi() % 3
 	if TType == 0:
 		var texture = load("res://assets/Sprites and sheets/Health and PickUps/Pearl.png")
@@ -38,6 +36,10 @@ func _ready():
 		animation.play("Diamond")
 		display.scale = Vector2(0.5, 0.5)
 
+func _ready():
+	add_to_group("treasure")
+	TRandomize()
+	
 func _on_Area2D_area_entered(area):
 	if area.name == "PlayerHitBox" and collected == false:
 		emit_signal("t_collected")
@@ -53,3 +55,6 @@ func _process(delta):
 
 func _on_Bounce_animation_finished(shrink):
 	queue_free()
+
+func _on_CrateTreasure_tree_exited():
+	print("Crate Treasure freed")
