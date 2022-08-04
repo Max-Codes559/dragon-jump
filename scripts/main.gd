@@ -10,10 +10,10 @@ onready var GraceTimer = $GraceTimer
 onready var CameraM = $Camera2D
 onready var spiders = get_tree().get_nodes_in_group("spiders")
 onready var TreasureGroup = get_tree().get_nodes_in_group("treasure")
-onready var CrateGroup = get_tree().get_nodes_in_group("crate")
+#onready var CrateGroup = get_tree().get_nodes_in_group("crate")
 onready var Player = $Player
 
-onready var TreasureLeft = TreasureGroup.size() + CrateGroup.size()
+onready var TreasureLeft = TreasureGroup.size()
 var player_health = 3
 
 func connect_to_spiders():

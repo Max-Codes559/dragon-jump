@@ -3,6 +3,9 @@
 [ext_resource path="res://assets/Sprites and sheets/box_item.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Crate.gd" type="Script" id=2]
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 16 )
+
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 16 )
@@ -39,21 +42,25 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 16 )
-
-[node name="Crate" type="Area2D"]
-collision_layer = 18
-collision_mask = 4
+[node name="Crate" type="StaticBody2D"]
+scale = Vector2( 2, 2 )
+collision_layer = 2
+collision_mask = 0
 script = ExtResource( 2 )
+
+[node name="CrateArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrateArea"]
+shape = SubResource( 2 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
-frame = 3
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BoxShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 
-[connection signal="area_entered" from="." to="." method="_on_Crate_area_entered"]
+[connection signal="area_entered" from="CrateArea" to="." method="_on_CrateArea_area_entered"]
