@@ -623,7 +623,7 @@ position = Vector2( 1688, 352 )
 [node name="Lava6" parent="." instance=ExtResource( 18 )]
 position = Vector2( 1752, 352 )
 
-[node name="CrateTreasure" parent="." instance=ExtResource( 20 )]
+[node name="CrateTreasure" parent="." instance=ExtResource( 19 )]
 position = Vector2( 920, -352 )
 scale = Vector2( 4, 4 )
 z_as_relative = false
