@@ -56,5 +56,3 @@ func _process(delta):
 func _on_Bounce_animation_finished(shrink):
 	queue_free()
 
-func _on_CrateTreasure_tree_exited():
-	print("Crate Treasure freed")

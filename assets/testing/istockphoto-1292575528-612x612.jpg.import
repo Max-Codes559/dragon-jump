@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/parralax test columns-01.png-7f0e441104a3a3eabcf6d718c5e15e9f.stex"
+path="res://.import/istockphoto-1292575528-612x612.jpg-b42adb27a3de5d2fffe373a04830c25b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/parralax test columns-01.png"
-dest_files=[ "res://.import/parralax test columns-01.png-7f0e441104a3a3eabcf6d718c5e15e9f.stex" ]
+source_file="res://assets/testing/istockphoto-1292575528-612x612.jpg"
+dest_files=[ "res://.import/istockphoto-1292575528-612x612.jpg-b42adb27a3de5d2fffe373a04830c25b.stex" ]
 
 [params]
 

@@ -1,0 +1,249 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://assets/Level Tiles/Hell PlatformA-export.png" type="Texture" id=1]
+[ext_resource path="res://assets/Sprites and sheets/Sky Box V2-01.png" type="Texture" id=2]
+[ext_resource path="res://assets/AnimatedRes/Hell Plat1 Animation.tres" type="Texture" id=3]
+[ext_resource path="res://assets/parralax test columns-01.png" type="Texture" id=4]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Level Tiles/HELL.png" type="Texture" id=6]
+[ext_resource path="res://assets/parralax test stalagmites-01.png" type="Texture" id=7]
+[ext_resource path="res://scripts/main.gd" type="Script" id=8]
+[ext_resource path="res://scripts/TimeDisplay.gd" type="Script" id=9]
+[ext_resource path="res://scripts/CountDown.gd" type="Script" id=10]
+[ext_resource path="res://assets/sounds/Hell Theme.wav" type="AudioStream" id=11]
+[ext_resource path="res://scripts/MusicPlayer.gd" type="Script" id=12]
+[ext_resource path="res://assets/Sprites and sheets/Health and PickUps/HealthUI.png" type="Texture" id=13]
+[ext_resource path="res://scripts/HUD.gd" type="Script" id=14]
+[ext_resource path="res://scripts/CameraM.gd" type="Script" id=15]
+[ext_resource path="res://scenes/Crate.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/I-pixel-u.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://scenes/CrateTreasure.tscn" type="PackedScene" id=21]
+[ext_resource path="res://assets/testing/istockphoto-1292575528-612x612.jpg" type="Texture" id=23]
+
+[sub_resource type="TileSet" id=4]
+0/name = "HELL.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 16, 16, 0, 16, 0, 0.00063324, 16, 0.00063324 )
+
+[sub_resource type="TileSet" id=1]
+0/name = "Hell Plat1 Animation.tres 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 2 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "Hell PlatformA-export.png 1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 16, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 3 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 20 )
+
+[node name="Main" type="Node2D"]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_vertical_guides_": [ 192.0 ]
+}
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0 )
+motion_mirroring = Vector2( 612, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( -307, -216 )
+texture = ExtResource( 23 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1311.7, 382 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 0 )
+motion_mirroring = Vector2( 768, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -384, -232 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( -199.54, 0, 680.151, 108 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 1, 0 )
+motion_mirroring = Vector2( 768, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( -384, -232 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 7 )
+centered = false
+region_enabled = true
+region_rect = Rect2( -199.54, 0, 680.151, 108 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, 0 )
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="Player"]
+pause_mode = 2
+stream = ExtResource( 11 )
+volume_db = -6.0
+script = ExtResource( 12 )
+
+[node name="GraceTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="SkyBox" type="Sprite" parent="."]
+modulate = Color( 0.964706, 0.984314, 0.921569, 0.607843 )
+position = Vector2( -38.0001, -1556 )
+scale = Vector2( 107.556, 96.5883 )
+z_index = -1
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CountDown" type="Timer" parent="."]
+wait_time = 50.0
+autostart = true
+script = ExtResource( 10 )
+
+[node name="TileMapBack" type="TileMap" parent="."]
+visible = false
+modulate = Color( 0.21, 0.18921, 0.1869, 1 )
+position = Vector2( -72, 0 )
+scale = Vector2( 32, 32 )
+tile_set = SubResource( 4 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 64
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -786428, 0, 0, -196614, 536870912, 0, -196613, 536870912, 0, -196612, 536870912, 0, -196611, 536870912, 0, -196610, 536870912, 0, -196609, 536870912, 0, -262144, 536870912, 0, -262143, 536870912, 0, -262142, 536870912, 0, -131078, 536870912, 0, -131077, 536870912, 0, -131076, 536870912, 0, -131075, 536870912, 0, -131074, 536870912, 0, -131073, 536870912, 0, -196608, 536870912, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -65542, 536870912, 0, -65541, 536870912, 0, -65540, 536870912, 0, -65539, 536870912, 0, -65538, 536870912, 0, -65537, 536870912, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -6, 536870912, 0, -5, 536870912, 0, -4, 536870912, 0, -3, 536870912, 0, -2, 536870912, 0, -1, 536870912, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, 65530, 536870912, 0, 65531, 536870912, 0, 65532, 536870912, 0, 65533, 536870912, 0, 65534, 536870912, 0, 65535, 536870912, 0, 0, 0, 0, 1, 536870912, 0, 2, 0, 0, 4, 536870912, 0, 131066, 536870912, 0, 131067, 536870912, 0, 131068, 536870912, 0, 131069, 536870912, 0, 131070, 536870912, 0, 131071, 536870912, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65542, 536870912, 0, 131075, 0, 0 )
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 4, 4 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 2
+collision_mask = 17
+format = 1
+tile_data = PoolIntArray( -196508, 0, 0, -130972, 0, 0, -65488, 0, 0, -65436, 0, 0, 65528, 0, 0, 7, 0, 0, 48, 0, 0, 100, 0, 0, 131064, 0, 0, 65543, 0, 0, 65584, 0, 0, 65636, 0, 0, 196600, 1, 0, 131079, 1, 0, 131120, 0, 0, 131172, 0, 0, 262120, 1, 0, 262121, 1, 0, 262122, 1, 0, 262123, 1, 0, 262124, 1, 0, 262125, 1, 0, 262126, 1, 0, 262127, 1, 0, 262128, 1, 0, 262129, 1, 0, 262130, 1, 0, 262131, 1, 0, 262132, 1, 0, 262133, 1, 0, 262134, 1, 0, 262135, 1, 0, 262136, 1, 0, 262137, 1, 0, 262138, 1, 0, 262139, 1, 0, 262140, 1, 0, 262141, 1, 0, 262142, 1, 0, 262143, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 1, 0, 196625, 1, 0, 196626, 1, 0, 196627, 1, 0, 196628, 1, 0, 196629, 1, 0, 196630, 1, 0, 196631, 1, 0, 196632, 1, 0, 196633, 1, 0, 196634, 1, 0, 196635, 1, 0, 196636, 1, 0, 196637, 1, 0, 196638, 1, 0, 196639, 1, 0, 196640, 1, 0, 196641, 1, 0, 196642, 1, 0, 196643, 1, 0, 196644, 1, 0, 196645, 1, 0, 196646, 1, 0, 196647, 1, 0, 196648, 1, 0, 196649, 1, 0, 196650, 1, 0, 196651, 1, 0, 196652, 1, 0, 196653, 1, 0, 196654, 1, 0, 196655, 1, 0, 196656, 1, 0, 196657, 1, 0, 196658, 1, 0, 196659, 1, 0, 196660, 1, 0, 196661, 1, 0, 196662, 1, 0, 196663, 1, 0, 196664, 1, 0, 196665, 1, 0, 196666, 1, 0, 196667, 1, 0, 196668, 1, 0, 196669, 1, 0, 196670, 1, 0, 196671, 1, 0, 196672, 1, 0, 196673, 1, 0, 196674, 1, 0, 196675, 1, 0, 196676, 1, 0, 196677, 1, 0, 196678, 1, 0, 196679, 1, 0, 196680, 1, 0, 196681, 1, 0, 196682, 1, 0, 196683, 1, 0, 196684, 1, 0, 196685, 1, 0, 196686, 1, 0, 196687, 1, 0, 196688, 1, 0, 196689, 1, 0, 196690, 1, 0, 196691, 1, 0, 196692, 1, 0, 196693, 1, 0, 196694, 1, 0, 196695, 1, 0, 196696, 1, 0, 196697, 1, 0, 196698, 1, 0, 196699, 1, 0, 196700, 1, 0, 196701, 1, 0, 196702, 1, 0, 196703, 1, 0, 196704, 1, 0, 196705, 1, 0, 196706, 1, 0, 196707, 1, 0, 196708, 1, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.4, 0.4 )
+script = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="Camera2D"]
+margin_left = -52.0
+margin_top = -266.0
+margin_right = 58.0
+margin_bottom = -221.0
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0.6, 1, 0.968627, 1 )
+custom_colors/font_color_shadow = Color( 0.0588235, 0.0196078, 0.2, 1 )
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = SubResource( 5 )
+align = 1
+valign = 1
+uppercase = true
+script = ExtResource( 9 )
+
+[node name="HUD" type="Control" parent="Camera2D"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Heart1" type="Sprite" parent="Camera2D/HUD"]
+position = Vector2( -454, -226 )
+scale = Vector2( 7, 7 )
+texture = ExtResource( 13 )
+hframes = 2
+
+[node name="Heart2" type="Sprite" parent="Camera2D/HUD"]
+position = Vector2( -306, -226 )
+scale = Vector2( 7, 7 )
+texture = ExtResource( 13 )
+hframes = 2
+
+[node name="Heart3" type="Sprite" parent="Camera2D/HUD"]
+position = Vector2( -378, -226 )
+scale = Vector2( 7, 7 )
+texture = ExtResource( 13 )
+hframes = 2
+
+[node name="CrateTreasure" parent="." instance=ExtResource( 21 )]
+position = Vector2( 416, 160 )
+
+[node name="Crate" parent="CrateTreasure" instance=ExtResource( 19 )]
+scale = Vector2( 0.5, 0.5 )
+
+[connection signal="add_to_timer" from="." to="CountDown" method="_on_Main_add_to_timer"]
+[connection signal="health_changed" from="." to="Camera2D/HUD" method="_on_Main_health_changed"]
+[connection signal="timeout" from="GraceTimer" to="." method="_on_GraceTimer_timeout"]
+[connection signal="timeout" from="CountDown" to="CountDown" method="_on_CountDown_timeout"]

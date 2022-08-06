@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Dragon Jump V4"
-run/main_scene="res://scenes/redone_scene01.tscn"
+run/main_scene="res://scenes/MaxTestingScene.tscn"
 config/icon="res://assets/testing/icon.png"
 
 [display]
