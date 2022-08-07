@@ -18,6 +18,7 @@ const DashSound = preload("res://assets/sounds/Dash_other.wav")
 const KickSound = preload("res://assets/sounds/Kick_sound.wav")
 const JumpSound = preload("res://assets/sounds/Retro FootStep 03.wav")
 const HurtSound = preload("res://assets/sounds/Bone hit.wav")
+const KnockbackLargeSound = preload("res://assets/sounds/Retro Event Wrong Simple 07.wav")
 const TreasureSound = preload("res://assets/sounds/Retro PickUp Coin 07.wav")
 const HealthSound = preload("res://assets/sounds/Retro PickUp 18.wav")
 #Impact and explosion are both played from spider
@@ -55,6 +56,17 @@ func knockback(direction):
 	motion = KnockbackD * 700
 	PlayerSound.stream = HurtSound
 	PlayerSound.playing = true
+	
+func knockback_large_enemy(direction):
+	DashingMove = false
+	stunned = true
+	StunTimer.start()
+	var KnockbackD = global_position - direction
+	KnockbackD = KnockbackD.normalized()
+	motion = KnockbackD * Vector2(1000, 500)
+	PlayerSound.stream = KnockbackLargeSound
+	PlayerSound.playing = true
+	
 func grace(start_end, direction):
 	if start_end == "start":
 		sprite.modulate = Color(1, 1, 1, 0.5)

@@ -47,8 +47,7 @@ func _on_Area2D_area_entered(area):
 
 func _process(delta):
 	if collected == true:
-		position = lerp(position, Player.position, 0.15)
+		position = lerp(position, Player.position, 8.15 * delta)
 
-
-func _on_Bounce_animation_finished(shrink):
+func _on_Bounce_animation_finished(_anim):
 	queue_free()
