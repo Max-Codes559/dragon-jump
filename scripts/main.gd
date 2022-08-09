@@ -14,7 +14,10 @@ onready var TreasureGroup = get_tree().get_nodes_in_group("treasure")
 onready var Player = $Player
 
 onready var TreasureLeft = TreasureGroup.size()
+onready var TreasureLeft_Label = get_node("Camera2D/TreasureCollected") 
 var player_health = 3
+var treasure_collected:int = 0
+onready var total_treasure:int =  TreasureGroup.size()
 
 func connect_to_spiders():
 	for member in spiders:
@@ -33,11 +36,15 @@ func connect_to_crate_treasure():
 func treasure_collect():
 	bonus_time(1)
 	TreasureLeft -= 1
+	treasure_collected += 1
+	
 	if TreasureLeft == 0:
 		get_tree().paused = true
 		var VicScreen = VictoryScreen.instance()
 		CameraM.add_child(VicScreen)
 	#activates when treasure sends t_collected signal
+	
+	TreasureLeft_Label.text = str(treasure_collected) + "/" + str(total_treasure)
 func add_spider_time():
 	bonus_time(5)
 	#activates when spider sends spider_died
@@ -76,8 +83,10 @@ func bonus_time(time):
 	#sending to CountDown
 
 func _ready():
+	TreasureLeft_Label.text = str(treasure_collected) + "/" + str(total_treasure)
 	connect_to_spiders()
 	connect_to_treasure()
+
 
 func _on_GraceTimer_timeout():
 	emit_signal("hurt_grace", "end", Vector2.ZERO)
