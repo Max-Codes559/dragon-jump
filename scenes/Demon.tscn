@@ -26,7 +26,7 @@ extents = Vector2( 11.25, 12.75 )
 
 [sub_resource type="CapsuleShape2D" id=11]
 radius = 12.0
-height = 8.0
+height = 4.0
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 13.5, 3.25 )
@@ -58,7 +58,7 @@ shape = SubResource( 9 )
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttBox"]
-position = Vector2( -5, 5.5 )
+position = Vector2( -5, 6 )
 shape = SubResource( 11 )
 
 [node name="HitWall" type="Area2D" parent="."]
@@ -91,7 +91,7 @@ collision_layer = 16
 collision_mask = 4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( -5, 5.5 )
+position = Vector2( -5, 6 )
 shape = SubResource( 11 )
 
 [connection signal="area_entered" from="AttBox" to="." method="_on_AttBox_area_entered"]

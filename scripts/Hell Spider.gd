@@ -62,7 +62,6 @@ func Second_phase():
 func Detect_edges():
 	if EdgeCheckLeft.is_colliding() == false:
 		switch = 1
-		print("spider on edge")
 		
 	if EdgeCheckRight.is_colliding() == false:
 		switch = -1
