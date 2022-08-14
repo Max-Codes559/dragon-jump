@@ -28,10 +28,6 @@ func connect_to_treasure():
 	for member in TreasureGroup:
 		var ConnectingTreasure = member
 		ConnectingTreasure.connect("t_collected", self, "treasure_collect")
-		
-func connect_to_crate_treasure():
-	#TreasureGroup[-1].connect("t_collected", self, "treasure_collect")
-	pass
 
 func treasure_collect():
 	bonus_time(1)

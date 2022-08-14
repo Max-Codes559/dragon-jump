@@ -78,6 +78,9 @@ func grace(start_end, direction):
 	if start_end == "end":
 		sprite.modulate = Color(1, 1, 1, 1)
 
+func dash_accessable():
+	pass
+
 func dash():
 	if DashingInv == false and Kicking == false:
 		animation.play("Dash")
@@ -118,12 +121,14 @@ func jump():
 		motion.y = -JumpForce
 		jumps -= 1
 		#double jump
+
 func glide():
 	if Kicking == false:
 		Gliding = true
 		MaxFallSpeed = GlideSpeed
 		animation.play("Gliding")
 		#glide function
+
 func kick():
 	if DashingInv == false:
 		Kicking = true

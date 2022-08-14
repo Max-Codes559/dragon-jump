@@ -46,7 +46,6 @@ func _physics_process(delta):
 	Walk(delta)
 
 func _on_HitWall_body_entered(_body):
-	print("demon hit wall")
 	switch *= -1
 
 func _on_AttBox_area_entered(area):
