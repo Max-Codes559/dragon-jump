@@ -3,6 +3,7 @@ extends Node2D
 signal add_to_timer(time)
 signal health_changed(new_health)
 signal hurt_grace(start_end, direction)
+signal send_score(score)
 
 const VictoryScreen = preload("res://scenes/Victory.tscn")
 
@@ -14,10 +15,13 @@ onready var TreasureGroup = get_tree().get_nodes_in_group("treasure")
 onready var Player = $Player
 
 onready var TreasureLeft = TreasureGroup.size()
-onready var TreasureLeft_Label = get_node("Camera2D/TreasureCollected") 
+onready var TreasureLeft_Label = get_node("Camera2D/TreasureCollected")
+onready var total_treasure:int =  TreasureGroup.size()
+onready var count_down_timer = $CountDown
+
 var player_health = 3
 var treasure_collected:int = 0
-onready var total_treasure:int =  TreasureGroup.size()
+var score:int
 
 func connect_to_spiders():
 	for member in spiders:
@@ -37,6 +41,7 @@ func treasure_collect():
 	if TreasureLeft == 0:
 		get_tree().paused = true
 		var VicScreen = VictoryScreen.instance()
+		send_score()
 		CameraM.add_child(VicScreen)
 	#activates when treasure sends t_collected signal
 	
@@ -83,6 +88,10 @@ func _ready():
 	connect_to_spiders()
 	connect_to_treasure()
 
-
 func _on_GraceTimer_timeout():
 	emit_signal("hurt_grace", "end", Vector2.ZERO)
+
+func send_score():
+	var time_left = count_down_timer.get_time_left()
+	score = treasure_collected * 0.1 * time_left
+	emit_signal("send_score",score)
