@@ -55,6 +55,7 @@ func knockback(direction):
 	KnockbackD = KnockbackD.normalized()
 	motion = KnockbackD * 700
 	PlayerSound.stream = HurtSound
+	PlayerSound.volume_db = 0
 	PlayerSound.playing = true
 	
 func knockback_large_enemy(direction):
@@ -65,6 +66,7 @@ func knockback_large_enemy(direction):
 	KnockbackD = KnockbackD.normalized()
 	motion = KnockbackD * Vector2(1000, 500)
 	PlayerSound.stream = KnockbackLargeSound
+	PlayerSound.volume_db = -13
 	PlayerSound.playing = true
 	
 func grace(start_end, direction):
@@ -85,6 +87,7 @@ func dash():
 	if DashingInv == false and Kicking == false:
 		animation.play("Dash")
 		PlayerSound.stream = DashSound
+		PlayerSound.volume_db = 0
 		PlayerSound.playing = true
 		DashDirect = get_local_mouse_position()
 		if DashDirect != Vector2.ZERO:
@@ -117,6 +120,7 @@ func jump():
 		IsJumping = true
 		animation.play("JumpUp")
 		PlayerSound.stream = JumpSound
+		PlayerSound.volume_db = 0
 		PlayerSound.playing = true
 		motion.y = -JumpForce
 		jumps -= 1
@@ -133,6 +137,7 @@ func kick():
 	if DashingInv == false:
 		Kicking = true
 		PlayerSound.stream = KickSound
+		PlayerSound.volume_db = 0
 		PlayerSound.playing = true
 		if sprite.flip_h == false:
 			KickBoxShape.position.x = 18
@@ -291,3 +296,5 @@ func _on_StunTimer_timeout():
 	stunned = false
 	sprite.frame = 0
 
+func _on_PlayerSound_finished():
+	PlayerSound.volume_db = 0
