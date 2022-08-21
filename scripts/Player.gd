@@ -50,13 +50,16 @@ var Gliding = false
 var IsFalling = false
 var IsJumping = false
 
+func play_sound(sound, volume: int = 0):
+	PlayerSound.stream = sound
+	PlayerSound.volume_db = volume
+	PlayerSound.playing = true
+
 func knockback(direction):
 	var KnockbackD = global_position - direction
 	KnockbackD = KnockbackD.normalized()
 	motion = KnockbackD * 700
-	PlayerSound.stream = HurtSound
-	PlayerSound.volume_db = 0
-	PlayerSound.playing = true
+	play_sound(HurtSound)
 	
 func knockback_large_enemy(direction):
 	DashingMove = false
@@ -65,9 +68,7 @@ func knockback_large_enemy(direction):
 	var KnockbackD = global_position - direction
 	KnockbackD = KnockbackD.normalized()
 	motion = KnockbackD * Vector2(1000, 500)
-	PlayerSound.stream = KnockbackLargeSound
-	PlayerSound.volume_db = -13
-	PlayerSound.playing = true
+	play_sound(KnockbackLargeSound, -13)
 	
 func grace(start_end, direction):
 	if start_end == "start":
@@ -80,20 +81,30 @@ func grace(start_end, direction):
 	if start_end == "end":
 		sprite.modulate = Color(1, 1, 1, 1)
 
-func dash_accessable():
-	pass
+func dash_accessable(AccDashDirect):
+	if DashingInv == false and Kicking == false:
+		animation.play("Dash")
+		play_sound(DashSound)
+		
+		DashDirect = AccDashDirect
+		AccDashDirect = AccDashDirect.normalized()
+		AccDashDirect *= DashSpeed
+	
+		if AccDashDirect.x > 0:
+			sprite.flip_h = false
+		elif AccDashDirect.x < 0:
+			sprite.flip_h = true
+			
+		MaxFallSpeed = DefMFS
 
 func dash():
 	if DashingInv == false and Kicking == false:
 		animation.play("Dash")
-		PlayerSound.stream = DashSound
-		PlayerSound.volume_db = 0
-		PlayerSound.playing = true
+		play_sound(DashSound)
 		DashDirect = get_local_mouse_position()
 		if DashDirect != Vector2.ZERO:
 			DashDirect = DashDirect.normalized()
 			DashDirect *= DashSpeed
-			#motion = Vector2(DashDirect.x * 10 * DashSpeed, DashDirect.y * DashSpeed)
 		
 			if DashDirect.x > 0:
 				sprite.flip_h = false
@@ -119,9 +130,7 @@ func jump():
 	if jumps > 0 and Kicking == false:
 		IsJumping = true
 		animation.play("JumpUp")
-		PlayerSound.stream = JumpSound
-		PlayerSound.volume_db = 0
-		PlayerSound.playing = true
+		play_sound(JumpSound)
 		motion.y = -JumpForce
 		jumps -= 1
 		#double jump
@@ -136,9 +145,7 @@ func glide():
 func kick():
 	if DashingInv == false:
 		Kicking = true
-		PlayerSound.stream = KickSound
-		PlayerSound.volume_db = 0
-		PlayerSound.playing = true
+		play_sound(KickSound)
 		if sprite.flip_h == false:
 			KickBoxShape.position.x = 18
 		elif sprite.flip_h == true:
@@ -218,7 +225,7 @@ func _physics_process(delta):
 		CoyoteTimer.start()
 		motion.y = 0
 	if DashingMove == true:
-		motion = DashDirect * delta
+		motion = DashDirect.normalized() * delta * 36000
 	if motion.y > 200 and is_on_floor() == false and IsFalling == false and DashingMove == false:
 		IsFalling = true
 		animation.queue("Falling")
@@ -253,6 +260,23 @@ func _input(event):
 					#enables glide
 		if Input.is_action_just_pressed("kick"):
 			kick()
+			
+		if Input.is_action_just_pressed("dash_left"):
+			if Dashes > 0:
+				dash_accessable(Vector2(-1, -0.1))
+				
+		if Input.is_action_just_pressed("dash_right"):
+			if Dashes > 0:
+				dash_accessable(Vector2(1, -0.1))
+				
+		if Input.is_action_just_pressed("dash_up"):
+			if Dashes > 0:
+				dash_accessable(Vector2(0, -1))
+			
+		if Input.is_action_just_pressed("dash_down"):
+			if Dashes > 0:
+				dash_accessable(Vector2(0, 1))
+			
 		if event is InputEventMouseButton:
 			if event.button_index == BUTTON_LEFT and event.pressed:
 				if Dashes > 0:
