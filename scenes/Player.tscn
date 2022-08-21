@@ -170,6 +170,7 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttBox"]
 scale = Vector2( 35, 35 )
 shape = SubResource( 9 )
+disabled = true
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.03
@@ -193,6 +194,7 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KickBox"]
 position = Vector2( 25, 8 )
 shape = SubResource( 14 )
+disabled = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]

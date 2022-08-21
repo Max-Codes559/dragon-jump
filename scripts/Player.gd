@@ -6,6 +6,7 @@ onready var animation = $AnimationPlayer
 onready var CameraM = get_node("../Camera2D")
 onready var sprite = $Sprite
 onready var AttBox = $AttBox
+onready var AttBoxShape = $AttBox/CollisionShape2D
 onready var KickBox = $KickBox
 onready var KickBoxShape = $KickBox/CollisionShape2D
 onready var CoyoteTimer = $CoyoteTimer
@@ -116,6 +117,7 @@ func dash():
 func set_dashing():
 	if DashingInv == false:
 		AttBox.monitorable = true
+		AttBoxShape.set_deferred("disabled", false)
 		DashingMove = true
 		DashingInv = true
 		yield(get_tree().create_timer(DashMoveTime, false), "timeout")
@@ -123,6 +125,7 @@ func set_dashing():
 		
 		yield(get_tree().create_timer(DashGraceTime, false), "timeout")
 		AttBox.monitorable = false
+		AttBoxShape.set_deferred("disabled", true)
 		DashingInv = false
 		Dashes -= 1
 	
@@ -152,11 +155,13 @@ func kick():
 			KickBoxShape.position.x = -24
 		
 		KickBox.monitorable = true
+		KickBoxShape.set_deferred("disabled", false)
 		animation.play("Kick")
 		yield(get_tree().create_timer(0.8, false), "timeout")
 	
 		Kicking = false
 		KickBox.monitorable = false
+		KickBoxShape.set_deferred("disabled", true)
 
 func falling(delta):
 	if DashingMove == false and CoyoteTimer.is_stopped():
