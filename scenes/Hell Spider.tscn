@@ -68,7 +68,7 @@ radius = 7.0
 radius = 9.0
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 10, 2.5 )
+extents = Vector2( 2.5, 2.5 )
 
 [node name="Hell Spider" type="KinematicBody2D"]
 scale = Vector2( 2, 2 )
@@ -115,7 +115,7 @@ position = Vector2( -1, 0 )
 shape = SubResource( 5 )
 
 [node name="PhaseTwoBox" type="CollisionShape2D" parent="HitWall"]
-position = Vector2( -1, -5 )
+position = Vector2( -9, -5 )
 shape = SubResource( 7 )
 disabled = true
 

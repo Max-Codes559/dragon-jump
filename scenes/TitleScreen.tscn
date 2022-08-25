@@ -12,6 +12,9 @@ anchor_bottom = 1.0
 texture = ExtResource( 4 )
 expand = true
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Main" type="VBoxContainer" parent="."]
 visible = false
@@ -78,6 +81,9 @@ margin_left = -43.0
 margin_top = -40.0
 margin_right = 43.0
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="LevelList" type="VBoxContainer" parent="LevelSelect"]
 margin_right = 202.0

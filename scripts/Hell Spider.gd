@@ -133,6 +133,7 @@ func _on_HitBox_area_entered(_area):
 
 func _on_HitWall_body_entered(_body):
 	switch *= -1
+	PhaseTwoBox.position.x *= -1
 	if SecondPhaseAct == false:
 		sprite.rotate(PI)
 

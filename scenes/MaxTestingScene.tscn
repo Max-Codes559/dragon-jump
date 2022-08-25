@@ -267,7 +267,7 @@ position = Vector2( -736, 160 )
 position = Vector2( -832, 32 )
 
 [node name="Hell Spider2" parent="." instance=ExtResource( 17 )]
-position = Vector2( -928, 64 )
+position = Vector2( -128, 56 )
 Direction = "Horizontal"
 
 [node name="Demon" parent="." instance=ExtResource( 25 )]
