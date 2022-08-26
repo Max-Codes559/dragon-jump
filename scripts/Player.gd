@@ -51,16 +51,26 @@ var Gliding = false
 var IsFalling = false
 var IsJumping = false
 
+func death():
+	print("Player respawned")
+	motion = Vector2.ZERO
+	DashingMove = false
+	animation.play("respawn")
+	stunned = true
+	StunTimer.start()
+
 func play_sound(sound, volume: int = 0):
 	PlayerSound.stream = sound
 	PlayerSound.volume_db = volume
 	PlayerSound.playing = true
 
 func knockback(direction):
+	motion = Vector2.ZERO
 	var KnockbackD = global_position - direction
 	KnockbackD = KnockbackD.normalized()
 	motion = KnockbackD * 700
 	play_sound(HurtSound)
+	print("direction = ", direction)
 	
 func knockback_large_enemy(direction):
 	DashingMove = false
@@ -222,6 +232,7 @@ func floor_reset():
 
 func _ready():
 	Main.connect("hurt_grace", self, "grace")
+	Main.connect("player_death", self, "death")
 
 func _physics_process(delta):
 	var was_on_floor = is_on_floor()

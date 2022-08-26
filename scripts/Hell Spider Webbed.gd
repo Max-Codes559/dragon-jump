@@ -73,7 +73,6 @@ func Second_phase():
 	SecondPhaseAct = true
 	EdgeCheckLeft.enabled = true
 	EdgeCheckRight.enabled = true
-	print("PhaseTwoBox disabled = ", PhaseTwoBox.disabled)
 func Detect_edges():
 	if EdgeCheckLeft.is_colliding() == false:
 		switch = 1
