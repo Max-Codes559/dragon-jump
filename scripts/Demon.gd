@@ -35,11 +35,9 @@ func Walk(delta):
 func Detect_edges():
 	if EdgeCheckLeft.is_colliding() == false:
 		switch = 1
-		#print("Left not colliding")
 		
 	if EdgeCheckRight.is_colliding() == false:
 		switch = -1
-		#print("right not colliding")
 
 func _physics_process(delta):
 	motion = move_and_slide(motion, up)

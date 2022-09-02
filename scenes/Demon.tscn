@@ -72,14 +72,14 @@ shape = SubResource( 12 )
 [node name="EdgeCheckLeft" type="RayCast2D" parent="."]
 position = Vector2( -16.5, 18 )
 enabled = true
-cast_to = Vector2( 0, 80 )
+cast_to = Vector2( 0, 40 )
 collision_mask = 2
 collide_with_areas = true
 
 [node name="EdgeCheckRight" type="RayCast2D" parent="."]
 position = Vector2( 6, 18 )
 enabled = true
-cast_to = Vector2( 0, 80 )
+cast_to = Vector2( 0, 40 )
 collision_mask = 2
 collide_with_areas = true
 

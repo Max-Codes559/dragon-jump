@@ -52,7 +52,6 @@ var IsFalling = false
 var IsJumping = false
 
 func death():
-	print("Player respawned")
 	motion = Vector2.ZERO
 	DashingMove = false
 	animation.play("respawn")
@@ -70,7 +69,6 @@ func knockback(direction):
 	KnockbackD = KnockbackD.normalized()
 	motion = KnockbackD * 700
 	play_sound(HurtSound)
-	print("direction = ", direction)
 	
 func knockback_large_enemy(direction):
 	DashingMove = false

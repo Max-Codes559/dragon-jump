@@ -54,6 +54,7 @@ func Second_phase():
 	PhaseOneBox.set_deferred("disabled", true)
 	PhaseTwoBox.set_deferred("disabled", false)
 	switch = 1
+	PhaseTwoBox.position.x = abs(PhaseTwoBox.position.x) * -1
 	sprite.rotation = 2 * PI
 	SecondPhaseAct = true
 	EdgeCheckLeft.enabled = true

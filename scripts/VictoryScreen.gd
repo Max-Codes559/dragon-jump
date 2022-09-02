@@ -4,8 +4,8 @@ onready var score_label = $CenterContainer/VBoxContainer/Score
 onready var stars_earned_label = $CenterContainer/VBoxContainer/StarsEarned
 
 var stars_earned:int #Number of stars earned, out of 3
-var score_for_three_stars:int = 35 # these are based on score, but can be changed
-var score_for_two_stars:int = 30
+var score_for_three_stars:int = 1400 # these are based on score, but can be changed
+var score_for_two_stars:int = 1000
 
 func _on_RestartButton_pressed():
 	get_tree().paused = false

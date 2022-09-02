@@ -56,7 +56,7 @@ func connect_to_checkpoints():
 		ConnectingCheckPoint.connect("Activated", self, "add_respawn_point")
 	
 func add_spider_time():
-	bonus_time(5)
+	bonus_time(2)
 	#activates when spider sends spider_died
 
 func player_damaged(damage, cause, direction):
@@ -67,7 +67,7 @@ func player_damaged(damage, cause, direction):
 			GraceTimer.start()
 			if player_health <= 0:
 				#emit_signal("hurt_grace", "start", Vector2.ZERO)
-				print("Killing blow")
+				pass
 			else:
 				emit_signal("hurt_grace", "start", direction)
 
@@ -77,7 +77,7 @@ func player_damaged(damage, cause, direction):
 			GraceTimer.start()
 			if player_health <= 0:
 				#emit_signal("hurt_grace", "start", Vector2.ZERO)
-				print("Killing blow")
+				pass
 			else:
 				emit_signal("hurt_grace", "start", direction)
 
@@ -117,8 +117,6 @@ func send_score():
 
 func add_respawn_point(CPPosition):
 	CheckPointArray.append(CPPosition)
-	print("respawn point added")
-	print(CheckPointArray)
 
 func find_closest_CP():
 	if CheckPointArray.size() != 0:
