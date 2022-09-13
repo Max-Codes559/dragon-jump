@@ -26,22 +26,12 @@ func _on_BtnLevel_pressed():
 	$LevelSelect.show()
 
 
-func _on_BtnOptions_pressed():
-	$Main.hide()
-	$Options.show()
-
-
 func _on_BtnQuit_pressed():
 	get_tree().quit()
 
 
 func _on_BtnLevelBack_pressed():
 	$LevelSelect.hide()
-	$Main.show()
-
-
-func _on_BtnOptionBack_pressed():
-	$Options.hide()
 	$Main.show()
 
 
