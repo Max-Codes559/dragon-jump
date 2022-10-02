@@ -15,6 +15,9 @@ anchor_bottom = 1.0
 texture = ExtResource( 4 )
 expand = true
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Main" type="VBoxContainer" parent="."]
 visible = false
