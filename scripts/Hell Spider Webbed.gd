@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 signal spider_died
 
-onready var Main = get_parent()
+onready var Main = $"../.."
 
 onready var sprite = $Sprite
 onready var animation = $AnimationPlayer
