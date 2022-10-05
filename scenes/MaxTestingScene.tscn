@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://assets/Level Tiles/Hell PlatformA-export.png" type="Texture" id=1]
 [ext_resource path="res://assets/Sprites and sheets/Sky Box V2-01.png" type="Texture" id=2]
@@ -33,6 +33,30 @@
 [ext_resource path="res://scenes/Mouse.tscn" type="PackedScene" id=31]
 [ext_resource path="res://assets/Mouse UI/Blue Orb.png" type="Texture" id=32]
 [ext_resource path="res://assets/Mouse UI/Red Orb.png" type="Texture" id=33]
+[ext_resource path="res://assets/Level Tiles/volcano_newWideV2.png" type="Texture" id=34]
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 2
+atlas = ExtResource( 34 )
+region = Rect2( 0, 0, 304, 108 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 2
+atlas = ExtResource( 34 )
+region = Rect2( 304, 0, 304, 108 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 2
+atlas = ExtResource( 34 )
+region = Rect2( 608, 0, 304, 108 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="TileSet" id=4]
 0/name = "HELL.png 0"
@@ -132,6 +156,20 @@ region_rect = Rect2( 0, 0, 292.898, 62.0695 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Volcano" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 56, 78 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 10 )
+frame = 1
+playing = true
+
+[node name="Volcano2" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 136, 112 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 10 )
+frame = 1
+playing = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.8, 0 )
