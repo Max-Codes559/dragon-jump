@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal OrbUpdate(dashes, jumps)
+
 const MenuScene = preload("res://scenes/Menu.tscn")
 onready var Main = get_parent()
 onready var animation = $AnimationPlayer
@@ -23,6 +25,7 @@ const KnockbackLargeSound = preload("res://assets/sounds/Retro Event Wrong Simpl
 const TreasureSound = preload("res://assets/sounds/Retro PickUp Coin 07.wav")
 const HealthSound = preload("res://assets/sounds/Retro PickUp 18.wav")
 #Impact and explosion are both played from spider
+var was_on_floor
 var stunned = false
 const up = Vector2(0, -1)
 var motion = Vector2()
@@ -121,6 +124,12 @@ func dash():
 				sprite.flip_h = true
 			
 		MaxFallSpeed = DefMFS
+		if Dashes == 2:
+			emit_signal("OrbUpdate", 1, jumps)
+			print("dashed while on floor")
+		else:
+			Dashes -= 1
+			emit_signal("OrbUpdate", Dashes, jumps)
 
 func set_dashing():
 	if DashingInv == false:
@@ -135,8 +144,9 @@ func set_dashing():
 		AttBox.monitorable = false
 		AttBoxShape.set_deferred("disabled", true)
 		DashingInv = false
-		Dashes -= 1
-	
+		if Dashes == 2:
+			Dashes -= 1
+
 func jump():
 	if jumps > 0 and Kicking == false:
 		IsJumping = true
@@ -144,6 +154,7 @@ func jump():
 		play_sound(JumpSound)
 		motion.y = -JumpForce
 		jumps -= 1
+		emit_signal("OrbUpdate", Dashes, jumps)
 		#double jump
 
 func glide():
@@ -215,12 +226,14 @@ func walking(delta):
 			#air resistance
 		#basic walking
 func floor_reset():
-	jumps = 2
-	MaxFallSpeed = DefMFS
-	CanGlide = false
-	Dashes = 2
-	IsFalling = false
-	IsJumping = false
+	if was_on_floor == false:
+		jumps = 2
+		MaxFallSpeed = DefMFS
+		CanGlide = false
+		Dashes = 2
+		IsFalling = false
+		IsJumping = false
+		emit_signal("OrbUpdate", Dashes, jumps)
 	if sprite.frame == 8:
 		sprite.frame = 0
 	if Gliding == true:
@@ -233,7 +246,7 @@ func _ready():
 	Main.connect("player_death", self, "death")
 
 func _physics_process(delta):
-	var was_on_floor = is_on_floor()
+	was_on_floor = is_on_floor()
 	motion = move_and_slide(motion, up)
 	if !is_on_floor() and was_on_floor and !IsJumping:
 		CoyoteTimer.start()
