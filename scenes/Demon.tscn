@@ -85,6 +85,7 @@ collide_with_areas = true
 
 [node name="PunchSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
+bus = "Enemy Bus"
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 16

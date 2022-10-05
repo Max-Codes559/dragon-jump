@@ -161,14 +161,12 @@ __meta__ = {
 position = Vector2( 56, 78 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
-frame = 1
 playing = true
 
 [node name="Volcano2" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2( 136, 112 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
-frame = 1
 playing = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]

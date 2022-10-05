@@ -29,7 +29,6 @@ func _on_Main_health_changed(new_health):
 		Hearts[n - 1].frame = 0
 
 func update_orbs(dashes, jumps):
-	print(dashes, jumps)
 	if dashes == 2:
 		RedOrb1.self_modulate = Color(1, 1, 1, 1)
 		RedOrb2.self_modulate = Color(1, 1, 1, 1)

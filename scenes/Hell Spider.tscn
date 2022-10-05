@@ -133,11 +133,13 @@ collide_with_areas = true
 
 [node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
-volume_db = -8.0
+volume_db = -1.0
 attenuation = 0.225313
+bus = "Enemy Bus"
 
 [node name="PunchSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
+bus = "Enemy Bus"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
