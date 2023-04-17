@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Red Orb.png-4af552188ed02a73afb6e7b479564878.stex"
+path="res://.import/volcano_newWideV2.png-ae4714525202c7386896d9776d4d0f0d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Mouse UI/Red Orb.png"
-dest_files=[ "res://.import/Red Orb.png-4af552188ed02a73afb6e7b479564878.stex" ]
+source_file="res://assets/Level Tiles/volcano_newWideV2.png"
+dest_files=[ "res://.import/volcano_newWideV2.png-ae4714525202c7386896d9776d4d0f0d.stex" ]
 
 [params]
 
@@ -19,8 +19,8 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
+flags/repeat=1
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

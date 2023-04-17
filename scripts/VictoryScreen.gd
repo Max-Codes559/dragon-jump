@@ -15,6 +15,7 @@ func _on_ExitButton_pressed():
 	get_tree().quit()
 	
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
 	Main.connect("send_score",self,"show_score")
 	show_score()

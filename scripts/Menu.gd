@@ -7,9 +7,11 @@ onready var Controls = load("res://scenes/ControlsTut.tscn")
 	
 func _ready():
 	MusicToggle.set_pressed_no_signal(LevelMusic.MusicOn) 
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 func _on_RestartButton_pressed():
 	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	get_tree().reload_current_scene()
 
 func _on_ExitButton_pressed():
@@ -17,12 +19,14 @@ func _on_ExitButton_pressed():
 
 func _on_ResumeButton_pressed():
 	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	queue_free()
 	
 func _input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ESCAPE:
 			get_tree().paused = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			queue_free()
 
 func _on_MusicToggle_toggled(button_pressed):
