@@ -1,8 +1,7 @@
-extends Sprite
+extends Node2D
 
 
 func _process(_delta):
-	offset = get_local_mouse_position()
-	position = get_global_mouse_position()
+	global_position = get_global_mouse_position()
 
 

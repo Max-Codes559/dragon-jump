@@ -2,14 +2,14 @@ extends Node2D
 
 signal t_collected
 
-onready var Player = get_node("../Player")
+onready var Player = $"../../Player"
 
 onready var TreasurePUShape = $TreasurePU/CollisionShape2D
 onready var animation = $Animation
 onready var bounce = $Bounce
 onready var display = $Display
 
-onready var main = get_parent()
+onready var main = $"../.."
 
 var collected = false
 

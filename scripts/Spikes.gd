@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var Main = get_parent()
+onready var Main = $"../.."
 
 func _on_AttBox_area_entered(area):
 	if area.name == "PlayerHitBox":
