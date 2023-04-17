@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-onready var Main = get_parent()
-onready var player = get_node("../Player")
+onready var Main = $"../.."
+onready var player = get_node("../../Player")
 
 onready var sprite = $Sprite
 onready var EdgeCheckLeft = $EdgeCheckLeft

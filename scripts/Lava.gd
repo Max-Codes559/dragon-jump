@@ -1,6 +1,6 @@
 extends Area2D
 
-onready var Main = get_parent()
+onready var Main = $"../.."
 
 func _on_Lava_area_entered(area):
 	if area.name == "PlayerHitBox":
