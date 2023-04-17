@@ -102,6 +102,7 @@ func bonus_time(time):
 	#sending to CountDown
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	TreasureLeft_Label.text = str(treasure_collected) + "/" + str(total_treasure)
 	connect_to_spiders()
 	connect_to_treasure()

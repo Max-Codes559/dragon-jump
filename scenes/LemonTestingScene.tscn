@@ -1,11 +1,9 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/Level Tiles/Hell PlatformA-export.png" type="Texture" id=1]
-[ext_resource path="res://assets/Sprites and sheets/Sky Box V2-01.png" type="Texture" id=2]
 [ext_resource path="res://assets/AnimatedRes/Hell Plat1 Animation.tres" type="Texture" id=3]
 [ext_resource path="res://assets/Level Tiles/Pillar cropped V2-01.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/Level Tiles/HELL.png" type="Texture" id=6]
 [ext_resource path="res://assets/Level Tiles/Stalagmite cropped-01.png" type="Texture" id=7]
 [ext_resource path="res://scripts/main.gd" type="Script" id=8]
 [ext_resource path="res://scripts/TimeDisplay.gd" type="Script" id=9]
@@ -89,22 +87,6 @@ font_data = ExtResource( 26 )
 [sub_resource type="DynamicFont" id=5]
 size = 32
 font_data = ExtResource( 20 )
-
-[sub_resource type="TileSet" id=4]
-0/name = "HELL.png 0"
-0/texture = ExtResource( 6 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 16, 16 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
 
 [node name="Main" type="Node2D"]
 scale = Vector2( 0.5, 0.5 )
@@ -1434,39 +1416,6 @@ position = Vector2( -2208, 400 )
 
 [node name="HealthItem3" parent="HealthItems" instance=ExtResource( 16 )]
 position = Vector2( 16, 3344 )
-
-[node name="Don\'t know it\'s use" type="Node2D" parent="."]
-
-[node name="Control" type="Control" parent="Don\'t know it\'s use"]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SkyBox" type="Sprite" parent="Don\'t know it\'s use"]
-visible = false
-modulate = Color( 0.964706, 0.984314, 0.921569, 0.45098 )
-position = Vector2( -38.0001, -1556 )
-scale = Vector2( 107.556, 96.5883 )
-z_index = -1
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="TileMapBack" type="TileMap" parent="Don\'t know it\'s use"]
-visible = false
-modulate = Color( 0.21, 0.18921, 0.1869, 1 )
-scale = Vector2( 32, 32 )
-tile_set = SubResource( 4 )
-cell_size = Vector2( 16, 16 )
-cell_quadrant_size = 64
-collision_layer = 0
-collision_mask = 0
-format = 1
-tile_data = PoolIntArray( -786428, 0, 0, -196614, 536870912, 0, -196613, 536870912, 0, -196612, 536870912, 0, -196611, 536870912, 0, -196610, 536870912, 0, -196609, 536870912, 0, -262144, 536870912, 0, -262143, 536870912, 0, -262142, 536870912, 0, -131078, 536870912, 0, -131077, 536870912, 0, -131076, 536870912, 0, -131075, 536870912, 0, -131074, 536870912, 0, -131073, 536870912, 0, -196608, 536870912, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -65542, 536870912, 0, -65541, 536870912, 0, -65540, 536870912, 0, -65539, 536870912, 0, -65538, 536870912, 0, -65537, 536870912, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -6, 536870912, 0, -5, 536870912, 0, -4, 536870912, 0, -3, 536870912, 0, -2, 536870912, 0, -1, 536870912, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, 65530, 536870912, 0, 65531, 536870912, 0, 65532, 536870912, 0, 65533, 536870912, 0, 65534, 536870912, 0, 65535, 536870912, 0, 0, 0, 0, 1, 536870912, 0, 2, 0, 0, 4, 536870912, 0, 131066, 536870912, 0, 131067, 536870912, 0, 131068, 536870912, 0, 131069, 536870912, 0, 131070, 536870912, 0, 131071, 536870912, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65542, 536870912, 0, 131075, 0, 0 )
 
 [connection signal="add_to_timer" from="." to="CountDown" method="_on_Main_add_to_timer"]
 [connection signal="health_changed" from="." to="Camera2D/HUD" method="_on_Main_health_changed"]
