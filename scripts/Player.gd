@@ -148,9 +148,10 @@ func set_dashing():
 			Dashes -= 1
 
 func jump():
-	if jumps > 0 and Kicking == false:
+	if jumps > 0:
 		IsJumping = true
-		animation.play("JumpUp")
+		if Kicking == false:
+			animation.play("JumpUp")
 		play_sound(JumpSound)
 		motion.y = -JumpForce
 		jumps -= 1
