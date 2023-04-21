@@ -6,7 +6,7 @@ signal health_changed(new_health)
 signal hurt_grace(start_end, direction)
 signal send_score(score)
 
-const VictoryScreen = preload("res://scenes/Victory.tscn")
+const VictoryScreen = preload("res://scenes/Menus/Victory.tscn")
 
 onready var GraceTimer = $GraceTimer
 onready var CameraM = $Camera2D

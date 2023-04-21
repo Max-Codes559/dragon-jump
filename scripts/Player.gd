@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 signal OrbUpdate(dashes, jumps)
 
-const MenuScene = preload("res://scenes/Menu.tscn")
+const MenuScene = preload("res://scenes/Menus/Menu.tscn")
 onready var Main = get_parent()
 onready var animation = $AnimationPlayer
 onready var CameraM = get_node("../Camera2D")

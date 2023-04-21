@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Level Tiles/Hell PlatformA-export.png" type="Texture" id=2]
 [ext_resource path="res://assets/DragonJump Back.jpeg" type="Texture" id=3]
-[ext_resource path="res://scenes/Hell Spider.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Enemies/Hell Spider.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/AnimatedRes/Hell Plat1 Animation.tres" type="Texture" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]

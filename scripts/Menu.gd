@@ -3,7 +3,7 @@ extends Node2D
 onready var LevelMusic = get_node("../../Player/LevelMusic")
 onready var MusicToggle = $MusicToggle
 onready var CameraM = get_parent()
-onready var Controls = load("res://scenes/ControlsTut.tscn")
+onready var Controls = load("res://scenes/Menus/ControlsTut.tscn")
 	
 func _ready():
 	MusicToggle.set_pressed_no_signal(LevelMusic.MusicOn) 
