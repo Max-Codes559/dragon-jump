@@ -43,12 +43,12 @@ custom_fonts/font = ExtResource( 2 )
 text = "The Tale of Bones the Skeleton"
 align = 1
 
-[node name="BtnInstructions" type="Button" parent="Main"]
+[node name="BtnStart" type="Button" parent="Main"]
 margin_top = 173.0
 margin_right = 624.0
 margin_bottom = 209.0
 custom_fonts/font = ExtResource( 1 )
-text = "Instructions"
+text = "Start"
 
 [node name="BtnLevel" type="Button" parent="Main"]
 margin_top = 213.0
@@ -57,10 +57,17 @@ margin_bottom = 249.0
 custom_fonts/font = ExtResource( 1 )
 text = "Select Level"
 
-[node name="BtnQuit" type="Button" parent="Main"]
+[node name="BtnInstructions" type="Button" parent="Main"]
 margin_top = 253.0
 margin_right = 624.0
 margin_bottom = 289.0
+custom_fonts/font = ExtResource( 1 )
+text = "Instructions"
+
+[node name="BtnQuit" type="Button" parent="Main"]
+margin_top = 293.0
+margin_right = 624.0
+margin_bottom = 329.0
 custom_fonts/font = ExtResource( 1 )
 text = "Quit"
 
@@ -129,8 +136,9 @@ margin_bottom = 720.0
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
 
-[connection signal="pressed" from="Main/BtnInstructions" to="." method="_on_BtnInstructions_pressed"]
+[connection signal="pressed" from="Main/BtnStart" to="." method="_on_BtnStart_pressed"]
 [connection signal="pressed" from="Main/BtnLevel" to="." method="_on_BtnLevel_pressed"]
+[connection signal="pressed" from="Main/BtnInstructions" to="." method="_on_BtnInstructions_pressed"]
 [connection signal="pressed" from="Main/BtnQuit" to="." method="_on_BtnQuit_pressed"]
 [connection signal="pressed" from="LevelSelect/BtnLevelBack" to="." method="_on_BtnLevelBack_pressed"]
 [connection signal="pressed" from="Instruction/BtnInstBack" to="." method="_on_BtnInstBack_pressed"]

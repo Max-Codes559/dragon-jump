@@ -1,5 +1,7 @@
 extends TextureRect
 
+var Hubworld = load("res://scenes/Levels/HubWorld.tscn")
+
 func _on_BtnInstructions_pressed():
 	$Main.hide()
 	$Instruction.show()
@@ -19,3 +21,5 @@ func _on_BtnInstBack_pressed():
 	$Instruction.hide()
 	$Main.show()
 
+func _on_BtnStart_pressed():
+	get_tree().change_scene_to(Hubworld)
