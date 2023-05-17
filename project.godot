@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="Dragon Jump V4"
+config/name="Dragon Jump V5"
 run/main_scene="res://scenes/Menus/TitleScreen.tscn"
 config/icon="res://assets/testing/icon.png"
 
