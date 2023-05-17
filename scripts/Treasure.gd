@@ -2,7 +2,7 @@ extends Node2D
 
 signal t_collected
 
-onready var Player = get_node("../../Player")
+onready var Player = $"../../Player"
 
 onready var TreasurePUShape = $TreasurePU/CollisionShape2D
 onready var animation = $Animation

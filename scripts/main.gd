@@ -6,7 +6,7 @@ signal health_changed(new_health)
 signal hurt_grace(start_end, direction)
 signal send_score(score)
 
-const VictoryScreen = preload("res://scenes/Victory.tscn")
+const VictoryScreen = preload("res://scenes/Menus/Victory.tscn")
 
 onready var GraceTimer = $GraceTimer
 onready var CameraM = $Camera2D
@@ -124,9 +124,20 @@ func find_closest_CP():
 		var PP = Player.global_position
 		var CPDistance = []
 		for CP in CheckPointArray:
+#			CPDistance.append(PP.distance_to(CP))
 			CPDistance.append(sqrt(pow((PP.x - CP.x), 2) + pow((PP.y - CP.y), 2)))
+		#index of Closest CheckPoint in CheckPointArray
 		var ClosestCPIndex = CPDistance.find(CPDistance.min())
-			#index of Closest CheckPoint in CheckPointArray
 		return CheckPointArray[ClosestCPIndex]
+	
+#		# just tried different approach
+#		var closest_checkpoint :Vector2
+#		var minimum_distance := 1000000
+#		for checkpoint in CheckPointArray:
+#			var distance = Player.global_position.distance_to(checkpoint)
+#			if distance < minimum_distance:
+#				minimum_distance = distance
+#				closest_checkpoint = checkpoint
+#		return closest_checkpoint
 	else:
 		return Vector2.ZERO

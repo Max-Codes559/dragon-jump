@@ -6,8 +6,8 @@
 [ext_resource path="res://assets/DragonJump Back.jpeg" type="Texture" id=4]
 [ext_resource path="res://scripts/TitleScreen.gd" type="Script" id=5]
 [ext_resource path="res://assets/Controls Graphic-01.png" type="Texture" id=6]
-[ext_resource path="res://scenes/LevelSelectRow.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/MaxTestingScene.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Menus/LevelSelectRow.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Levels/LemonTestingScene.tscn" type="PackedScene" id=8]
 
 [node name="TitleScreen" type="TextureRect"]
 anchor_right = 1.0
@@ -15,12 +15,8 @@ anchor_bottom = 1.0
 texture = ExtResource( 4 )
 expand = true
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Main" type="VBoxContainer" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -47,12 +43,12 @@ custom_fonts/font = ExtResource( 2 )
 text = "The Tale of Bones the Skeleton"
 align = 1
 
-[node name="BtnInstructions" type="Button" parent="Main"]
+[node name="BtnStart" type="Button" parent="Main"]
 margin_top = 173.0
 margin_right = 624.0
 margin_bottom = 209.0
 custom_fonts/font = ExtResource( 1 )
-text = "Instructions"
+text = "Start"
 
 [node name="BtnLevel" type="Button" parent="Main"]
 margin_top = 213.0
@@ -61,14 +57,22 @@ margin_bottom = 249.0
 custom_fonts/font = ExtResource( 1 )
 text = "Select Level"
 
-[node name="BtnQuit" type="Button" parent="Main"]
+[node name="BtnInstructions" type="Button" parent="Main"]
 margin_top = 253.0
 margin_right = 624.0
 margin_bottom = 289.0
 custom_fonts/font = ExtResource( 1 )
+text = "Instructions"
+
+[node name="BtnQuit" type="Button" parent="Main"]
+margin_top = 293.0
+margin_right = 624.0
+margin_bottom = 329.0
+custom_fonts/font = ExtResource( 1 )
 text = "Quit"
 
 [node name="LevelSelect" type="VBoxContainer" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -87,7 +91,7 @@ margin_bottom = 156.0
 
 [node name="TestLevel" parent="LevelSelect/LevelList" instance=ExtResource( 7 )]
 margin_right = 212.0
-level_name = "Test Level"
+level_name = "Example Level"
 level_scene = ExtResource( 8 )
 
 [node name="LevelSelectRow" parent="LevelSelect/LevelList" instance=ExtResource( 7 )]
@@ -132,8 +136,9 @@ margin_bottom = 720.0
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
 
-[connection signal="pressed" from="Main/BtnInstructions" to="." method="_on_BtnInstructions_pressed"]
+[connection signal="pressed" from="Main/BtnStart" to="." method="_on_BtnStart_pressed"]
 [connection signal="pressed" from="Main/BtnLevel" to="." method="_on_BtnLevel_pressed"]
+[connection signal="pressed" from="Main/BtnInstructions" to="." method="_on_BtnInstructions_pressed"]
 [connection signal="pressed" from="Main/BtnQuit" to="." method="_on_BtnQuit_pressed"]
 [connection signal="pressed" from="LevelSelect/BtnLevelBack" to="." method="_on_BtnLevelBack_pressed"]
 [connection signal="pressed" from="Instruction/BtnInstBack" to="." method="_on_BtnInstBack_pressed"]

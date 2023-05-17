@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 signal OrbUpdate(dashes, jumps)
 
-const MenuScene = preload("res://scenes/Menu.tscn")
+const MenuScene = preload("res://scenes/Menus/Menu.tscn")
 onready var Main = get_parent()
 onready var animation = $AnimationPlayer
 onready var CameraM = get_node("../Camera2D")
@@ -148,9 +148,10 @@ func set_dashing():
 			Dashes -= 1
 
 func jump():
-	if jumps > 0 and Kicking == false:
+	if jumps > 0:
 		IsJumping = true
-		animation.play("JumpUp")
+		if Kicking == false:
+			animation.play("JumpUp")
 		play_sound(JumpSound)
 		motion.y = -JumpForce
 		jumps -= 1

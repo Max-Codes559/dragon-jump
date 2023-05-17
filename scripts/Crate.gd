@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-const obj_treasure = preload("res://scenes/CrateTreasure.tscn")
+const obj_treasure = preload("res://scenes/Collectables/CrateTreasure.tscn")
 const BreakSound = preload("res://assets/sounds/Crate_break.wav")
 func _ready():
 	pass
