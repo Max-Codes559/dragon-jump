@@ -27,47 +27,47 @@ margin_right = 312.0
 margin_bottom = 172.0
 
 [node name="Title" type="Label" parent="Main"]
-visible = false
-margin_right = 624.0
+margin_right = 696.0
 margin_bottom = 120.0
 custom_colors/font_color = Color( 0.8, 0, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
-text = "Dragon Jump"
+text = "Skeleton Jump"
 align = 1
 
 [node name="SubTitle" type="Label" parent="Main"]
-margin_right = 624.0
-margin_bottom = 45.0
+margin_top = 124.0
+margin_right = 696.0
+margin_bottom = 169.0
 custom_colors/font_color = Color( 0.8, 0, 0, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "The Tale of Bones the Skeleton"
 align = 1
 
 [node name="BtnStart" type="Button" parent="Main"]
-margin_top = 49.0
-margin_right = 624.0
-margin_bottom = 85.0
+margin_top = 173.0
+margin_right = 696.0
+margin_bottom = 209.0
 custom_fonts/font = ExtResource( 1 )
 text = "Start"
 
 [node name="BtnLevel" type="Button" parent="Main"]
-margin_top = 89.0
-margin_right = 624.0
-margin_bottom = 125.0
+margin_top = 213.0
+margin_right = 696.0
+margin_bottom = 249.0
 custom_fonts/font = ExtResource( 1 )
 text = "Select Level"
 
 [node name="BtnInstructions" type="Button" parent="Main"]
-margin_top = 129.0
-margin_right = 624.0
-margin_bottom = 165.0
+margin_top = 253.0
+margin_right = 696.0
+margin_bottom = 289.0
 custom_fonts/font = ExtResource( 1 )
 text = "Instructions"
 
 [node name="BtnQuit" type="Button" parent="Main"]
-margin_top = 169.0
-margin_right = 624.0
-margin_bottom = 205.0
+margin_top = 293.0
+margin_right = 696.0
+margin_bottom = 329.0
 custom_fonts/font = ExtResource( 1 )
 text = "Quit"
 
