@@ -32,13 +32,13 @@ var motion = Vector2()
 export(int, 1, 20) var Speed = 1
 var MaxSpeed = 12500 * Speed
 
-const DashSpeed = 32500
+const DashSpeed = 100
 var Dashes = 2 
 var DashDirect = Vector2.ZERO
 var DashingMove = false
 var DashingInv = false
 #Invincibility from dashing, slightly longer than move
-var DashMoveTime = 0.4
+var DashMoveTime = 0.25
 var DashGraceTime = 0.3
 
 var Kicking = false
