@@ -181,39 +181,46 @@ __meta__ = {
 [node name="Heart1" type="Sprite" parent="Camera2D/HUD"]
 position = Vector2( -454, -226 )
 scale = Vector2( 7, 7 )
+z_index = 10
 texture = ExtResource( 13 )
 hframes = 2
 
 [node name="Heart2" type="Sprite" parent="Camera2D/HUD"]
 position = Vector2( -306, -226 )
 scale = Vector2( 7, 7 )
+z_index = 10
 texture = ExtResource( 13 )
 hframes = 2
 
 [node name="Heart3" type="Sprite" parent="Camera2D/HUD"]
 position = Vector2( -378, -226 )
 scale = Vector2( 7, 7 )
+z_index = 10
 texture = ExtResource( 13 )
 hframes = 2
 
 [node name="RedOrb" type="Sprite" parent="Camera2D/HUD"]
 position = Vector2( -454, -176 )
 scale = Vector2( 2, 2 )
+z_index = 10
 texture = ExtResource( 6 )
 
 [node name="RedOrb2" type="Sprite" parent="Camera2D/HUD"]
 position = Vector2( -406, -176 )
 scale = Vector2( 2, 2 )
+z_index = 10
 texture = ExtResource( 6 )
 
 [node name="BlueOrb" type="Sprite" parent="Camera2D/HUD"]
 position = Vector2( -358, -176 )
 scale = Vector2( 2, 2 )
+z_index = 10
 texture = ExtResource( 2 )
 
 [node name="BlueOrb2" type="Sprite" parent="Camera2D/HUD"]
 position = Vector2( -310, -176 )
 scale = Vector2( 2, 2 )
+z_index = 10
 texture = ExtResource( 2 )
 
 [node name="Gold" type="Sprite" parent="Camera2D"]
