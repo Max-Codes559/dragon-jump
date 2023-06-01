@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/AnimatedRes/Hell Plat1 Animation.tres" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/Level Tiles/SkyTint-01.png" type="Texture" id=7]
 [ext_resource path="res://scenes/LevelPortal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Levels/LemonTestingScene.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Levels/BoxBreakingLevel.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -99,3 +100,7 @@ __meta__ = {
 [node name="LevelPortal" parent="." instance=ExtResource( 8 )]
 position = Vector2( 598, 178 )
 level_scene = ExtResource( 9 )
+
+[node name="LevelPortal2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 766, 178 )
+level_scene = ExtResource( 10 )

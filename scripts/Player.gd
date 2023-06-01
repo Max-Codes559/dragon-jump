@@ -108,6 +108,14 @@ func dash_accessable(AccDashDirect):
 			sprite.flip_h = true
 			
 		MaxFallSpeed = DefMFS
+		
+		if Dashes == 2:
+			emit_signal("OrbUpdate", 1, jumps)
+			print("dashed while on floor")
+		else:
+			Dashes -= 1
+			emit_signal("OrbUpdate", Dashes, jumps)
+		
 
 func dash():
 	if DashingInv == false and Kicking == false:

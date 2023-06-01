@@ -31,7 +31,7 @@ var Position1 = Vector2.ZERO
 var SecondPhaseAct = false
 var gravity = 30
 var MaxFallSpeed = 600
-var IsFalling = false
+export var IsFalling = false
 var IsExploding = false
 
 func Ground_walk(delta):
