@@ -19,7 +19,7 @@ font_data = ExtResource( 5 )
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 5 )
 
-[node name="Menu" type="Node2D"]
+[node name="InLevelMenu" type="Node2D"]
 pause_mode = 2
 z_index = 1
 script = ExtResource( 1 )
@@ -86,7 +86,7 @@ margin_right = 400.0
 margin_bottom = 550.0
 rect_min_size = Vector2( 400, 100 )
 custom_fonts/font = SubResource( 2 )
-text = "EXIT"
+text = "EXIT LEVEL"
 
 [node name="MusicToggle" type="CheckBox" parent="."]
 margin_left = 311.0

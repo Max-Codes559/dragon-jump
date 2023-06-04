@@ -4,8 +4,14 @@ onready var LevelMusic = get_node("../../Player/LevelMusic")
 onready var MusicToggle = $MusicToggle
 onready var CameraM = get_parent()
 onready var Controls = load("res://scenes/Menus/ControlsTut.tscn")
+onready var ExitButton = $CenterContainer/VBoxContainer/ExitButton
+
+var Hub = load("res://scenes/Levels/HubWorld.tscn")
 	
 func _ready():
+	print(get_tree().current_scene.name)
+	if get_tree().current_scene.name == "HubWorld":
+		ExitButton.text = "QUIT"
 	MusicToggle.set_pressed_no_signal(LevelMusic.MusicOn) 
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
@@ -15,7 +21,11 @@ func _on_RestartButton_pressed():
 	get_tree().reload_current_scene()
 
 func _on_ExitButton_pressed():
-	get_tree().quit()
+	if get_tree().current_scene.name == "HubWorld":
+		get_tree().quit()
+	else:
+		get_tree().paused = false
+		get_tree().change_scene_to(Hub)
 
 func _on_ResumeButton_pressed():
 	get_tree().paused = false
