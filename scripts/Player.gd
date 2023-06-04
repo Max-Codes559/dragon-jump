@@ -70,7 +70,7 @@ func knockback(direction):
 	motion = Vector2.ZERO
 	var KnockbackD = global_position - direction
 	KnockbackD = KnockbackD.normalized()
-	motion = KnockbackD * 700
+	motion = KnockbackD * 450
 	play_sound(HurtSound)
 	
 func knockback_large_enemy(direction):

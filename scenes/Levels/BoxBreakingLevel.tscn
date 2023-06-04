@@ -262,10 +262,10 @@ script = ExtResource( 10 )
 position = Vector2( -432, 160 )
 
 [node name="Hell Spider Ground2" parent="Hell Spiders Ground" instance=ExtResource( 17 )]
-position = Vector2( -224, 192 )
+position = Vector2( -368, 0 )
 
 [node name="Hell Spider Ground3" parent="Hell Spiders Ground" instance=ExtResource( 17 )]
-position = Vector2( -64, 192 )
+position = Vector2( -208, 0 )
 
 [node name="Hell Spiders" type="Node2D" parent="."]
 
@@ -300,6 +300,78 @@ position = Vector2( -480, 224 )
 
 [node name="Crate25" parent="TreasureCrates" instance=ExtResource( 18 )]
 position = Vector2( -480, 224 )
+
+[node name="CrateTreasure6" parent="TreasureCrates" instance=ExtResource( 19 )]
+position = Vector2( -160, 224 )
+
+[node name="Crate26" parent="TreasureCrates" instance=ExtResource( 18 )]
+position = Vector2( -160, 224 )
+
+[node name="CrateTreasure7" parent="TreasureCrates" instance=ExtResource( 19 )]
+position = Vector2( -160, 160 )
+
+[node name="Crate27" parent="TreasureCrates" instance=ExtResource( 18 )]
+position = Vector2( -160, 160 )
+
+[node name="CrateTreasure8" parent="TreasureCrates" instance=ExtResource( 19 )]
+position = Vector2( -224, 224 )
+
+[node name="Crate28" parent="TreasureCrates" instance=ExtResource( 18 )]
+position = Vector2( -224, 224 )
+
+[node name="CrateTreasure9" parent="TreasureCrates" instance=ExtResource( 19 )]
+position = Vector2( -288, 224 )
+
+[node name="Crate29" parent="TreasureCrates" instance=ExtResource( 18 )]
+position = Vector2( -288, 224 )
+
+[node name="CrateTreasure10" parent="TreasureCrates" instance=ExtResource( 19 )]
+position = Vector2( 32, 224 )
+
+[node name="Crate30" parent="TreasureCrates" instance=ExtResource( 18 )]
+position = Vector2( 32, 224 )
+
+[node name="CrateTreasure11" parent="TreasureCrates" instance=ExtResource( 19 )]
+position = Vector2( 32, 160 )
+
+[node name="Crate31" parent="TreasureCrates" instance=ExtResource( 18 )]
+position = Vector2( 32, 160 )
+
+[node name="CrateTreasure12" parent="TreasureCrates" instance=ExtResource( 19 )]
+position = Vector2( -32, 224 )
+
+[node name="Crate32" parent="TreasureCrates" instance=ExtResource( 18 )]
+position = Vector2( -32, 224 )
+
+[node name="CrateTreasure13" parent="TreasureCrates" instance=ExtResource( 19 )]
+position = Vector2( -96, 224 )
+
+[node name="Crate33" parent="TreasureCrates" instance=ExtResource( 18 )]
+position = Vector2( -96, 224 )
+
+[node name="CrateTreasure14" parent="TreasureCrates" instance=ExtResource( 19 )]
+position = Vector2( 224, 224 )
+
+[node name="Crate34" parent="TreasureCrates" instance=ExtResource( 18 )]
+position = Vector2( 224, 224 )
+
+[node name="CrateTreasure15" parent="TreasureCrates" instance=ExtResource( 19 )]
+position = Vector2( 224, 160 )
+
+[node name="Crate35" parent="TreasureCrates" instance=ExtResource( 18 )]
+position = Vector2( 224, 160 )
+
+[node name="CrateTreasure16" parent="TreasureCrates" instance=ExtResource( 19 )]
+position = Vector2( 160, 224 )
+
+[node name="Crate36" parent="TreasureCrates" instance=ExtResource( 18 )]
+position = Vector2( 160, 224 )
+
+[node name="CrateTreasure17" parent="TreasureCrates" instance=ExtResource( 19 )]
+position = Vector2( 96, 224 )
+
+[node name="Crate37" parent="TreasureCrates" instance=ExtResource( 18 )]
+position = Vector2( 96, 224 )
 
 [node name="Lavas" type="Node2D" parent="."]
 
