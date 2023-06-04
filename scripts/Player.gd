@@ -142,6 +142,8 @@ func dash():
 func set_dashing():
 	if DashingInv == false:
 		AttBox.monitorable = true
+		set_collision_layer_bit(6, false)
+		#pass through platforms
 		AttBoxShape.set_deferred("disabled", false)
 		DashingMove = true
 		DashingInv = true
@@ -152,6 +154,7 @@ func set_dashing():
 		AttBox.monitorable = false
 		AttBoxShape.set_deferred("disabled", true)
 		DashingInv = false
+		set_collision_layer_bit(6, true)
 		if Dashes == 2:
 			Dashes -= 1
 
@@ -251,6 +254,8 @@ func floor_reset():
 		sprite.frame = 0
 
 func _ready():
+	set_collision_layer_bit(6, true)
+	#allows collision with platforms
 	Main.connect("hurt_grace", self, "grace")
 	Main.connect("player_death", self, "death")
 

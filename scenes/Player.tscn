@@ -163,6 +163,7 @@ extents = Vector2( 17, 24 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, -32 )
+z_index = 1
 collision_mask = 2
 script = ExtResource( 1 )
 
