@@ -2,12 +2,8 @@ extends StaticBody2D
 
 const obj_treasure = preload("res://scenes/Collectables/CrateTreasure.tscn")
 const BreakSound = preload("res://assets/sounds/Crate_break.wav")
-func _ready():
-	pass
-	#add_to_group("crate")
-	#need to count crates to tell how many treasures there WILL be
 
-func _on_CrateArea_area_entered(_area):
+func _on_CrateArea_area_entered(_area = "other"):
 	var animation = $AnimationPlayer
 	animation.play("BoxBreak")
 	var Collision = $BoxShape

@@ -12,6 +12,7 @@ onready var AttBox = $AttBox
 onready var AttBoxCollider = AttBox.get_child(0)
 onready var ExplosionSound = $ExplosionSound
 onready var PunchSound = $PunchSound
+onready var Explosion = $Explosion
 
 onready var HitWall = $HitWall
 onready var PhaseOneBox = HitWall.get_child(0)
@@ -93,6 +94,13 @@ func Vertical_on_wall(delta):
 		switch = 1
 		
 func Explode():
+	for areas in Explosion.get_overlapping_areas():
+		print(areas.name)
+		if areas.name == "CrateArea":
+			areas.get_parent()._on_CrateArea_area_entered()
+			print("crate breaks by spider explosion")
+	
+	
 	motion.x = 0
 	IsExploding = true
 	animation.play("explode")

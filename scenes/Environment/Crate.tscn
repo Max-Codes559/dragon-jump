@@ -98,7 +98,7 @@ collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="CrateArea" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 128
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrateArea"]
@@ -107,7 +107,7 @@ shape = SubResource( 2 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="BoxShape" type="CollisionShape2D" parent="."]

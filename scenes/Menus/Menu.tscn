@@ -35,9 +35,6 @@ margin_top = -310.0
 margin_right = 576.0
 margin_bottom = 310.0
 color = Color( 0.396078, 0.458824, 0.545098, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 margin_left = -512.0

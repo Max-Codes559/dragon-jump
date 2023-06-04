@@ -20,6 +20,7 @@ onready var WebParticles = $WebParticles
 onready var HitWall = $HitWall
 onready var PhaseOneBox = HitWall.get_child(0)
 onready var PhaseTwoBox = HitWall.get_child(1)
+onready var Explosion = $Explosion
 
 export(int, 10, 100) var SpeedTwo = 30
 #export(String, "Vertical", "Horizontal") var Direction = "Vertical"
@@ -88,6 +89,10 @@ func Falling(delta):
 			Second_phase()
 
 func Explode():
+	for areas in Explosion.get_overlapping_areas():
+		if areas.name == "CrateArea":
+			print("crate breaks by spider explosion")
+	
 	motion.x = 0
 	IsExploding = true
 	animation.play("explode")
