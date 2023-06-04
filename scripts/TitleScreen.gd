@@ -1,6 +1,6 @@
 extends TextureRect
 
-var Hubworld = load("res://scenes/Levels/HubWorld.tscn")
+export (PackedScene) var Hubworld
 
 func _on_BtnInstructions_pressed():
 	$Main.hide()

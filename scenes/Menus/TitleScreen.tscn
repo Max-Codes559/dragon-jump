@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/fonts/font_md.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/font_title_md.tres" type="DynamicFont" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Controls Graphic-01.png" type="Texture" id=6]
 [ext_resource path="res://scenes/Menus/LevelSelectRow.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Levels/LemonTestingScene.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Levels/HubWorld.tscn" type="PackedScene" id=9]
 
 [node name="TitleScreen" type="TextureRect"]
 anchor_right = 1.0
@@ -15,6 +16,7 @@ anchor_bottom = 1.0
 texture = ExtResource( 4 )
 expand = true
 script = ExtResource( 5 )
+Hubworld = ExtResource( 9 )
 
 [node name="Main" type="VBoxContainer" parent="."]
 anchor_left = 0.5

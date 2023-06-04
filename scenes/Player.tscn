@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/Sprites and sheets/Bones/Bones Sheet V4.png" type="Texture" id=2]
-[ext_resource path="res://scenes/color_change.gdshader" type="Shader" id=3]
+[ext_resource path="res://Shaders/color_change.gdshader" type="Shader" id=3]
 
 [sub_resource type="ShaderMaterial" id=17]
 resource_local_to_scene = true
