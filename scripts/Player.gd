@@ -16,6 +16,7 @@ onready var StunTimer = $StunTimer
 onready var PlayerSound = $PlayerSound
 onready var PickupSound = $PickupSound
 onready var Hat = $Hat
+onready var HatAnim = $Hat.get_child(0)
 
 onready var LevelMusic = $LevelMusic
 const DashSound = preload("res://assets/sounds/Dash_other.wav")
@@ -227,6 +228,16 @@ func walking(delta):
 			if animation.current_animation == "Walking":
 				animation.stop()
 				sprite.frame = 0
+				
+		if motion.x > 10:
+			Hat.position = Vector2(6, -28)
+			if is_on_floor() == true:
+				HatAnim.play("hat_moving")
+		elif motion.x < -10:
+			Hat.position = Vector2(-6, -28)
+			if is_on_floor() == true:
+				HatAnim.play("hat_moving")
+				
 	elif stunned == true:
 		animation.stop()
 		sprite.frame = 4
@@ -247,12 +258,14 @@ func floor_reset():
 		IsFalling = false
 		IsJumping = false
 		emit_signal("OrbUpdate", Dashes, jumps)
+		Hat.frame = 0
 	if sprite.frame == 8:
 		sprite.frame = 0
 	if Gliding == true:
 		animation.stop()
 		Gliding = false
 		sprite.frame = 0
+		
 
 func _ready():
 	set_collision_layer_bit(6, true)
@@ -261,6 +274,7 @@ func _ready():
 	Main.connect("player_death", self, "death")
 
 func _physics_process(delta):
+	#print(motion.x)
 	was_on_floor = is_on_floor()
 	motion = move_and_slide(motion, up)
 	if !is_on_floor() and was_on_floor and !IsJumping:
@@ -275,13 +289,23 @@ func _physics_process(delta):
 	falling(delta)
 	walking(delta)
 	
+	
 	if sprite.flip_h == true:
 		Hat.flip_h = true
-		Hat.position = Vector2(-3, -28)
-	if sprite.flip_h == false:
+		if motion.x <= 10 and motion.x >= -10:
+			Hat.position = Vector2(-3, -28)
+			Hat.frame = 0
+			HatAnim.stop(false)
+	elif sprite.flip_h == false:
 		Hat.flip_h = false
-		Hat.position = Vector2(3, -28)
-	
+		if motion.x <= 10 and motion.x >= -10:
+			Hat.position = Vector2(3, -28)
+			Hat.frame = 0
+			HatAnim.stop(false)
+			
+	if is_on_floor() == false and was_on_floor == true:
+		HatAnim.stop(false)
+		
 	if is_on_floor() == true:
 		floor_reset()
 
