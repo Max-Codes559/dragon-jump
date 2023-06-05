@@ -87,14 +87,14 @@ collide_with_areas = true
 stream = ExtResource( 4 )
 bus = "Enemy Bus"
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="DemonHitbox" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 4
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DemonHitbox"]
 position = Vector2( -5, 6 )
 shape = SubResource( 11 )
 
 [connection signal="area_entered" from="AttBox" to="." method="_on_AttBox_area_entered"]
 [connection signal="body_entered" from="HitWall" to="." method="_on_HitWall_body_entered"]
-[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="area_entered" from="DemonHitbox" to="." method="_on_Hitbox_area_entered"]

@@ -324,7 +324,7 @@ position = Vector2( 688, 92 )
 [node name="Hell Spider Ground" type="Node2D" parent="."]
 
 [node name="Hell Spider Ground" parent="Hell Spider Ground" instance=ExtResource( 32 )]
-position = Vector2( -578, 168 )
+position = Vector2( -1074, 140 )
 
 [node name="Hell Spiders" type="Node2D" parent="."]
 

@@ -15,6 +15,7 @@ onready var CoyoteTimer = $CoyoteTimer
 onready var StunTimer = $StunTimer
 onready var PlayerSound = $PlayerSound
 onready var PickupSound = $PickupSound
+onready var Hat = $Hat
 
 onready var LevelMusic = $LevelMusic
 const DashSound = preload("res://assets/sounds/Dash_other.wav")
@@ -273,6 +274,13 @@ func _physics_process(delta):
 		#plays falling animation
 	falling(delta)
 	walking(delta)
+	
+	if sprite.flip_h == true:
+		Hat.flip_h = true
+		Hat.position = Vector2(-3, -28)
+	if sprite.flip_h == false:
+		Hat.flip_h = false
+		Hat.position = Vector2(3, -28)
 	
 	if is_on_floor() == true:
 		floor_reset()

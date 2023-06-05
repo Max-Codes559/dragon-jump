@@ -94,18 +94,19 @@ func Vertical_on_wall(delta):
 		switch = 1
 		
 func Explode():
-	for areas in Explosion.get_overlapping_areas():
-		print(areas.name)
-		if areas.name == "CrateArea":
-			areas.get_parent()._on_CrateArea_area_entered()
-			print("crate breaks by spider explosion")
+	if IsExploding == false:
+		for areas in Explosion.get_overlapping_areas():
+			if areas.name == "CrateArea":
+				areas.get_parent()._on_CrateArea_area_entered()
+				print("crate breaks by spider explosion")
+			if areas.name == "HitBox":
+				areas.get_parent().Explode()
 	
-	
-	motion.x = 0
-	IsExploding = true
-	animation.play("explode")
-	ExplosionSound.playing = true
-	emit_signal("spider_died")
+		motion.x = 0
+		IsExploding = true
+		animation.play("explode")
+		ExplosionSound.playing = true
+		emit_signal("spider_died")
 
 func _ready():
 	add_to_group("spiders")
