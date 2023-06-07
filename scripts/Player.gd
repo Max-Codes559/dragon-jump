@@ -118,7 +118,6 @@ func dash_accessable(AccDashDirect):
 			Dashes -= 1
 			emit_signal("OrbUpdate", Dashes, jumps)
 		
-
 func dash():
 	if DashingInv == false and Kicking == false:
 		animation.play("Dash")
@@ -292,13 +291,13 @@ func _physics_process(delta):
 	
 	if sprite.flip_h == true:
 		Hat.flip_h = true
-		if motion.x <= 10 and motion.x >= -10:
+		if motion.x <= 10 and motion.x >= -10 and is_on_floor():
 			Hat.position = Vector2(-3, -28)
 			Hat.frame = 0
 			HatAnim.stop(false)
 	elif sprite.flip_h == false:
 		Hat.flip_h = false
-		if motion.x <= 10 and motion.x >= -10:
+		if motion.x <= 10 and motion.x >= -10 and is_on_floor():
 			Hat.position = Vector2(3, -28)
 			Hat.frame = 0
 			HatAnim.stop(false)

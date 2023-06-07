@@ -1,5 +1,6 @@
 extends Sprite
 
+export(Texture) var hatTexture
 
 func _ready():
 	pass
